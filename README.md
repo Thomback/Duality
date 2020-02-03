@@ -1,2 +1,0 @@
-# Duality
-Duality indie game
