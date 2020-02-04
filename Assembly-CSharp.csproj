@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{09DE7E14-B4A5-6CAC-08E0-2378A251B532}</ProjectGuid>
+    <ProjectGuid>{32B1FD77-49CD-C40F-76BD-CE1A43C42460}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,33 +62,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Physics\CharacterControllerBrackeys.cs" />
     <Compile Include="Assets\Scripts\Physics\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Physics\REALPlayerMovementBrackeys.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Physics are fun/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

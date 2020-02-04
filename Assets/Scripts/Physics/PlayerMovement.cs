@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 gravity = new Vector2(0,-9.8f);
 
     private BoxCollider2D boxCollider;
+    private CircleCollider2D circleCollider;
 
     private Vector2 velocity;
 
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         Physics2D.gravity = gravity;
     }
 
@@ -82,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             // Ignore our own collider.
-            if (hit == boxCollider)
+            if (hit == boxCollider || hit == circleCollider)
                 continue;
 
             ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
