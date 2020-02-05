@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class REALPlayerMovementBrackeys : MonoBehaviour
 {
+    Animator anim;
+
     public CharacterControllerBrackeys controller;
     public float runSpeed = 40f;
 
@@ -11,6 +13,10 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    private void Start()
+    {
+        anim = transform.GetChild(0).GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -31,6 +37,14 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(Mathf.Abs(horizontalMove) != 0)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }

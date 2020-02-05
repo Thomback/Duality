@@ -92,6 +92,12 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:/Thomas/Annee 4 travail Thomas/Unity perso/Duality/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>

@@ -21,6 +21,9 @@ public class CharacterControllerBrackeys : MonoBehaviour
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
 
+    Animator anim;
+    float lastYPosition;
+
     [Header("Events")]
     [Space]
 
@@ -41,7 +44,10 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
         if (OnCrouchEvent == null)
             OnCrouchEvent = new BoolEvent();
+
+        anim = transform.GetChild(0).GetComponent<Animator>();
     }
+    
 
     private void FixedUpdate()
     {
@@ -56,10 +62,24 @@ public class CharacterControllerBrackeys : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 m_Grounded = true;
+                anim.SetBool("isGrounded", true);
                 if (!wasGrounded)
                     OnLandEvent.Invoke();
             }
         }
+        
+
+        //Change animation to fall
+        if (transform.position.y < lastYPosition)
+        {
+            anim.SetBool("isFalling", true);
+        }
+        else
+        {
+            anim.SetBool("isFalling", false);
+        }
+
+        lastYPosition = transform.position.y;
     }
 
 
@@ -131,6 +151,8 @@ public class CharacterControllerBrackeys : MonoBehaviour
         {
             // Add a vertical force to the player.
             m_Grounded = false;
+            anim.SetBool("isGrounded", false);
+            anim.SetTrigger("Jumping");
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
     }
