@@ -76,11 +76,14 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
             anim.SetBool("idleEvent", false);
             anim.SetBool("idleEvent2", false);
             anim.SetBool("idleEvent3", false);
+            anim.SetBool("idleEvent4", false);
             yield return new WaitForSeconds(1);
             waitedSeconds = waitedSeconds + 2;
             if(waitedSeconds >= 16)
             {
-                switch (Mathf.FloorToInt(Random.Range(0, 3)))
+                anim.SetBool("idleEvent4", true);
+                StartCoroutine(waitForPushUps());
+                /*switch (Mathf.FloorToInt(Random.Range(0, 4)))
                 {
                     case 0:
                         anim.SetBool("idleEvent", true);
@@ -91,11 +94,22 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
                     case 2:
                         anim.SetBool("idleEvent3", true);
                         break;
+                    case 3:
+                        anim.SetBool("idleEvent4", true);
+                        yield return new WaitForSeconds(5);
+                        anim.SetTrigger("pushUpEnd");
+                        break;
                     default:
                         break;
-                }
+                }*/
                 waitedSeconds = 0;
             }
         }
+    }
+
+    private IEnumerator waitForPushUps()
+    {
+        yield return new WaitForSeconds(9);
+        anim.SetTrigger("pushUpEnd");
     }
 }
