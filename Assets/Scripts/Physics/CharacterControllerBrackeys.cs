@@ -47,7 +47,21 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
         anim = transform.GetChild(0).GetComponent<Animator>();
     }
-    
+
+    private void Update()
+    {
+        //Change animation to fall
+        if (transform.position.y < lastYPosition)
+        {
+            anim.SetBool("isFalling", true);
+        }
+        else
+        {
+            anim.SetBool("isFalling", false);
+        }
+
+        lastYPosition = transform.position.y;
+    }
 
     private void FixedUpdate()
     {
@@ -67,19 +81,6 @@ public class CharacterControllerBrackeys : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
-        
-
-        //Change animation to fall
-        if (transform.position.y < lastYPosition)
-        {
-            anim.SetBool("isFalling", true);
-        }
-        else
-        {
-            anim.SetBool("isFalling", false);
-        }
-
-        lastYPosition = transform.position.y;
     }
 
 

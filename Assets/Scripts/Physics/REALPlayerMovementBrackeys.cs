@@ -47,6 +47,7 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
             {
                 isMooving = true;
                 anim.SetBool("isRunning", true);
+                anim.SetTrigger("Run");
                 StopAllCoroutines();
                 waitedSeconds = 0;
             }
@@ -58,6 +59,7 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
                 isMooving = false;
                 anim.SetBool("idleEvent", false);
                 anim.SetBool("isRunning", false);
+                anim.SetTrigger("Stay");
                 StartCoroutine(idleWaiter());
             }
         }
