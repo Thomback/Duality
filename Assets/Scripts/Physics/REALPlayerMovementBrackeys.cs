@@ -79,11 +79,10 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
             anim.SetBool("idleEvent4", false);
             yield return new WaitForSeconds(1);
             waitedSeconds = waitedSeconds + 2;
-            if(waitedSeconds >= 16)
+            if(waitedSeconds >= 12)
             {
-                anim.SetBool("idleEvent4", true);
-                StartCoroutine(waitForPushUps());
-                /*switch (Mathf.FloorToInt(Random.Range(0, 4)))
+                
+                switch (Mathf.FloorToInt(Random.Range(0, 4)))
                 {
                     case 0:
                         anim.SetBool("idleEvent", true);
@@ -96,12 +95,11 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
                         break;
                     case 3:
                         anim.SetBool("idleEvent4", true);
-                        yield return new WaitForSeconds(5);
-                        anim.SetTrigger("pushUpEnd");
+                        StartCoroutine(waitForPushUps());
                         break;
                     default:
                         break;
-                }*/
+                }
                 waitedSeconds = 0;
             }
         }
