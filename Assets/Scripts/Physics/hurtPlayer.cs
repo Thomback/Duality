@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class hurtPlayer : MonoBehaviour
 {
-    public GameObject text;
-
     private BattleStats battleStats;
 
     private void Start()
@@ -24,8 +22,7 @@ public class hurtPlayer : MonoBehaviour
         {
             battleStats.takeDamage(5);
             battleStats.hitStun();
-            battleStats.enableInvicibilityFrames(3);
-            text.GetComponent<Text>().text = GetComponent<BattleStats>().currentHP.ToString() + " / " + GetComponent<BattleStats>().maxHP.ToString();
+            battleStats.enableInvicibilityFrames(1.5f);
         }
     }
 }
