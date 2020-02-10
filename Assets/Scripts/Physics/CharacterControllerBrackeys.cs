@@ -158,7 +158,8 @@ public class CharacterControllerBrackeys : MonoBehaviour
             m_Grounded = false;
             anim.SetBool("isGrounded", false);
             anim.SetTrigger("Jumping");
-            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            //m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
         }
     }
 

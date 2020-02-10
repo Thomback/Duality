@@ -32,7 +32,7 @@ public class BattleStats : MonoBehaviour
     [Tooltip("Entity's run speed increase in percentage")]
     public float runSpeedIncrease = 0;        // Entity's run speed increase in percentage
     [Tooltip("Entity's jump force")]
-    public float jumpForce = 1000;            // Entity's jump force
+    public float jumpForce = 20;            // Entity's jump force
 
     [HideInInspector]
     public bool invicibilityFrames;
