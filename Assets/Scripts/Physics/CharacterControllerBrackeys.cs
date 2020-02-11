@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class CharacterControllerBrackeys : MonoBehaviour
 {
     [SerializeField][Tooltip("Only used if object doesn't have the BattleStats script")]
-    private float m_JumpForce = 400f;                                           // Amount of force added when the player jumps.
+    private float m_JumpForce = 20f;                                            // Amount of force added when the player jumps.
+    private float m_RunSpeed = 60f;                                             // Amount of speed applied to the run movement
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
@@ -24,6 +25,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
     Animator anim;
     float lastYPosition;
+    private BattleStats battleStats;
 
     [Header("Events")]
     [Space]
@@ -38,6 +40,8 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
     private void Awake()
     {
+        battleStats = GetComponent<BattleStats>();
+
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
         if (OnLandEvent == null)
@@ -47,9 +51,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
             OnCrouchEvent = new BoolEvent();
 
         anim = transform.GetChild(0).GetComponent<Animator>();
-        if (GetComponent<BattleStats>()){
-            m_JumpForce = GetComponent<BattleStats>().jumpForce;
-        }
+        updateValues();
     }
 
     private void Update()
@@ -90,6 +92,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump)
     {
+        move *= m_RunSpeed;
         // If crouching, check to see if the character can stand up
         if (crouch)
         {
@@ -173,5 +176,15 @@ public class CharacterControllerBrackeys : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+
+    public void updateValues()
+    {
+        if (battleStats)
+        {
+            m_JumpForce = battleStats.finalJumpForce();
+            m_RunSpeed = battleStats.finalRunSpeed();
+        }
     }
 }

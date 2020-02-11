@@ -8,8 +8,6 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
     private bool isMooving;
 
     public CharacterControllerBrackeys controller;
-    [Tooltip("Only used if object doesn't have the BattleStats script")]
-    public float runSpeed = 60f;
 
     float horizontalMove = 0f;
     bool jump = false;
@@ -21,16 +19,11 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
     private void Start()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
-
-        if (GetComponent<BattleStats>())
-        {
-            runSpeed = GetComponent<BattleStats>().runSpeed;
-        }
     }
 
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump"))
         {
