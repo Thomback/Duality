@@ -8,12 +8,21 @@ public class ItemList : MonoBehaviour
     [HideInInspector]
     public Item[] items;
 
+    private int id = 0;
+
     private void Awake()
     {
         items = new Item[] {
+            new Item(
+                0,
+                "Null",
+                "Valeur par defaut",
+                null,
+                true
+                ),
             // ----- Starting Items ------ //
             new Item(   // Epee courte
-            0,
+            newId(),
             "Epée Courte",
             "Attention, elle est rouillée.",
             Resources.Load<Sprite>("Sprites/Items/EpeeCourte"),
@@ -21,7 +30,7 @@ public class ItemList : MonoBehaviour
             ),
 
             new Item(   // Dague
-            1,
+            newId(),
             "Dague",
             "Une fine lame aiguisée. Un peu courte cependant.",
             Resources.Load<Sprite>("Sprites/Items/Dague"),
@@ -29,7 +38,7 @@ public class ItemList : MonoBehaviour
             ),
 
             new Item(   // Capuche
-            2,
+            newId(),
             "Capuche",
             "Petit capuchon vert. Joli.",
             Resources.Load<Sprite>("Sprites/Items/Capuche"),
@@ -37,7 +46,7 @@ public class ItemList : MonoBehaviour
             ),
 
             new Item(   // Casque en cuir
-            3,
+            newId(),
             "Casque en cuir",
             "Ce casque n'est pas très resistant, mais c'est mieux que rien.",
             Resources.Load<Sprite>("Sprites/Items/CasqueEnCuir"),
@@ -45,7 +54,7 @@ public class ItemList : MonoBehaviour
             ),
 
             new Item(   // Pantalon
-            4,
+            newId(),
             "Pantalon",
             "C'est étrange, ce pantalon possède un design bien particulier," +
             " il semblerait presque sorti d'une autre époque.",
@@ -54,7 +63,7 @@ public class ItemList : MonoBehaviour
             ),
 
             new Item(   // Bottes
-            5,
+            newId(),
             "Bottes",
             "Ces botines vous vont à ravir!",
             Resources.Load<Sprite>("Sprites/Items/Bottes"),
@@ -62,5 +71,11 @@ public class ItemList : MonoBehaviour
             )
         };
 
+    }
+
+    private int newId()
+    {
+        this.id++;
+        return this.id;
     }
 }

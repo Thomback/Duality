@@ -22,7 +22,7 @@ public class hurtPlayer : MonoBehaviour
         {
             battleStats.takeDamage(5);
             battleStats.hitStun();
-            battleStats.enableInvicibilityFrames(1.5f);
+            battleStats.enableInvicibilityFrames(0.7f);
         }
     }
 }

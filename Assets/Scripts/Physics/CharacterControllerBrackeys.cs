@@ -93,6 +93,9 @@ public class CharacterControllerBrackeys : MonoBehaviour
     public void Move(float move, bool crouch, bool jump)
     {
         move *= m_RunSpeed;
+
+        crouch = false; //Disable Crouch pour l'instant
+
         // If crouching, check to see if the character can stand up
         if (crouch)
         {
@@ -158,9 +161,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
         if (m_Grounded && jump)
         {
             // Add a vertical force to the player.
-            m_Grounded = false;
-            anim.SetBool("isGrounded", false);
-            anim.SetTrigger("Jumping");
+            Jump();
             //m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
         }
@@ -186,5 +187,12 @@ public class CharacterControllerBrackeys : MonoBehaviour
             m_JumpForce = battleStats.finalJumpForce();
             m_RunSpeed = battleStats.finalRunSpeed();
         }
+    }
+
+    public void Jump()
+    {
+        m_Grounded = false;
+        anim.SetBool("isGrounded", false);
+        anim.SetTrigger("Jumping");
     }
 }

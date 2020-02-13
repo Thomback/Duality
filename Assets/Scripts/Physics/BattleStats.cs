@@ -162,7 +162,7 @@ public class BattleStats : MonoBehaviour
             }else{
                 GetComponent<Rigidbody2D>().velocity = new Vector2(7f, 10f);
             }
-            
+            GetComponent<CharacterControllerBrackeys>().Jump();
             StartCoroutine(waitThenEnableMovement());
         }
     }
