@@ -17,7 +17,6 @@ public class hurtPlayer : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Collision avec " + collision.gameObject.name);
         if (collision.gameObject.layer == 9 && collision.gameObject.tag == "Ennemy")
         {
             battleStats.takeDamage(5);

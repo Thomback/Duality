@@ -29,12 +29,39 @@ public class REALPlayerMovementBrackeys : MonoBehaviour
         {
             jump = true;
         }
+
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
         } else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
+        }
+
+        // ----- Abilities -----
+
+        // Attaque principale
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Attaque principale");
+        }
+
+        // Attaque lourde
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Debug.Log("Attaque lourde");
+        }
+
+        // Equipement 1
+        if (Input.GetButtonDown("Ability1"))
+        {
+            Debug.Log("Equipement 1");
+        }
+
+        // Equipement 2
+        if (Input.GetButtonDown("Ability2"))
+        {
+            Debug.Log("Equipement 2");
         }
 
 
