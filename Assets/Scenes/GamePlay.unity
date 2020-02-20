@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 195583024}
   m_Layer: 9
   m_Name: Peasant
-  m_TagString: Ennemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,7 +494,7 @@ Transform:
   m_Children:
   - {fileID: 1974966409}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &195583026
 MonoBehaviour:
@@ -778,6 +778,155 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439789973}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &465389869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465389870}
+  - component: {fileID: 465389871}
+  m_Layer: 9
+  m_Name: EpeeCourteSimple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &465389870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465389869}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.81, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1464936873}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &465389871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465389869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12463c02b39e174c88ab42a2e005899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shape: Cube
+  attackRangeX: 1.77
+  attackRangeY: 0.78
+  attackRangeSphere: 0
+--- !u!1 &607981255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607981257}
+  - component: {fileID: 607981256}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &607981256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607981255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01a9585eef66a044b5fdd5dc752dd45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - itemId: 0
+    itemName: Null
+    itemDescription: "Valeur par d\xE9faut"
+    itemSprite: {fileID: 21300000, guid: 27151a91c258f084cbda130ccaf84395, type: 3}
+    slotLocation: 0
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 1
+    itemName: "Ep\xE9e Courte"
+    itemDescription: "Attention, elle est rouill\xE9e."
+    itemSprite: {fileID: 21300000, guid: 9e2c93b0d3badea4da52b27ed2d88902, type: 3}
+    slotLocation: 0
+    attackAreaSimple: {fileID: 465389869}
+    attackAreaLourde: {fileID: 1785848883}
+    objectInScene: {fileID: 5803473432038960974}
+  - itemId: 1
+    itemName: Dague
+    itemDescription: "Une fine lame aiguis\xE9e. Un peu courte cependant."
+    itemSprite: {fileID: 21300000, guid: 2c7e4d8bc61bcc54b9f8c7fe32b4abee, type: 3}
+    slotLocation: 0
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 3
+    itemName: Capuche
+    itemDescription: Petit capuchon vert. Joli.
+    itemSprite: {fileID: 21300000, guid: 37b04ea956e05664d9ef35a338cd099e, type: 3}
+    slotLocation: 1
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 4
+    itemName: Casque en Cuir
+    itemDescription: "Ce casque n'est pas tr\xE8s resistant, mais c'est mieux que
+      rien."
+    itemSprite: {fileID: 21300000, guid: 33bf6379bb300c64a9925db8eabffb2a, type: 3}
+    slotLocation: 1
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 5
+    itemName: Pantalon
+    itemDescription: "C'est \xE9trange, ce pantalon poss\xE8de un design bien particulier,
+      il semblerait presque sorti d'une autre \xE9poque."
+    itemSprite: {fileID: 21300000, guid: 7e3580b8e7a780a46a6a749bb9f152f0, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 6
+    itemName: Bottes
+    itemDescription: "Ces botines vous vont \xE0 ravir!"
+    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+--- !u!4 &607981257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607981255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &691462912
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +1123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &759967226
 GameObject:
@@ -1373,7 +1522,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -1608,7 +1757,7 @@ RectTransform:
   - {fileID: 1754398877}
   - {fileID: 1741930288}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1677,7 +1826,7 @@ Transform:
   - {fileID: 691462913}
   - {fileID: 831384613}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1285985663
 GameObject:
@@ -1947,7 +2096,7 @@ Transform:
   m_LocalScale: {x: 209.0467, y: 30.094154, z: 1.29}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1335684038
 GameObject:
@@ -2014,7 +2163,7 @@ Transform:
   m_Children:
   - {fileID: 1285985664}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1340175431
 GameObject:
@@ -2153,7 +2302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1419320475
 GameObject:
@@ -2394,6 +2543,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17272472, y: 0.985891}
   m_EdgeRadius: 0
+--- !u!1 &1464936872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1464936873}
+  m_Layer: 9
+  m_Name: AttackArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1464936873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464936872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 465389870}
+  - {fileID: 1785848884}
+  m_Father: {fileID: 1673680452}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490437835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,14 +2947,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1673680452}
-  - component: {fileID: 1673680456}
   - component: {fileID: 1673680450}
   - component: {fileID: 1673680449}
   - component: {fileID: 1673680453}
+  - component: {fileID: 1673680456}
   - component: {fileID: 1673680451}
-  - component: {fileID: 1673680454}
   - component: {fileID: 1673680455}
   - component: {fileID: 1673680457}
+  - component: {fileID: 1673680454}
+  - component: {fileID: 1673680458}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -2865,8 +3047,9 @@ Transform:
   - {fileID: 5006512736870111706}
   - {fileID: 759967227}
   - {fileID: 1225758072}
+  - {fileID: 1464936873}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1673680453
 Rigidbody2D:
@@ -2902,6 +3085,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1673680451}
+  battleStats: {fileID: 1673680456}
+  anim: {fileID: 92043138}
+  playerAttack: {fileID: 1673680455}
 --- !u!114 &1673680455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,6 +3100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ddb37fd026dc64bab9109036814d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPos: {fileID: 1673680452}
+  attackRange: 1.87
+  whatIsEnnemy:
+    serializedVersion: 2
+    m_Bits: 512
+  itemSlots: {fileID: 1673680458}
+  battleStats: {fileID: 1673680456}
+  itemList: {fileID: 607981256}
+  anim: {fileID: 92043138}
 --- !u!114 &1673680456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,6 +3151,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5499a9a2c5480fd4883dfa1a349ef431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1673680458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673680448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa73a4fd05a5e54caa2647be9e9e2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlot: 1
+  equipmentSlot1: 0
+  equipmentSlot2: 0
+  listeItems: {fileID: 607981256}
 --- !u!1 &1691926890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,8 +3504,55 @@ Transform:
   - {fileID: 165198931}
   - {fileID: 781348299}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1785848883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1785848884}
+  - component: {fileID: 1785848885}
+  m_Layer: 9
+  m_Name: EpeeCourteLourde
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1785848884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785848883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.74, y: 0.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1464936873}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1785848885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785848883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12463c02b39e174c88ab42a2e005899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shape: Sphere
+  attackRangeX: 0
+  attackRangeY: 0
+  attackRangeSphere: 1.11
 --- !u!1 &1849447241
 GameObject:
   m_ObjectHideFlags: 0

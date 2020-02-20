@@ -2,23 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+[System.Serializable]
+public class Item
 {
+    [HideInInspector]
     public int itemId;
     public string itemName;
     public string itemDescription;
     public Sprite itemSprite;
-    public bool itemIsWeapon;               // if False, is equipment
-    public bool ItemIsEquipped = false;
+    public int slotLocation;               // if 0, is equipment, 1 is equipment1, 2 is equipment2, 3 is both
+    public GameObject attackAreaSimple;
+    public GameObject attackAreaLourde;
+    public GameObject objectInScene;
 
-
-    public Item(int id, string name, string description, Sprite sprite, bool isWeapon)
+    public Item(string name, string description, Sprite sprite, int slotLocation)
     {
-        this.itemId = id;
         this.itemName = name;
         this.itemDescription = description;
         this.itemSprite = sprite;
-        this.itemIsWeapon = isWeapon;
+        this.slotLocation = slotLocation;
+    }
+
+    public Item(string name, string description, Sprite sprite, int slotLocation, GameObject attackAreaSimple, GameObject attackAreaLourde)
+    {
+        this.itemName = name;
+        this.itemDescription = description;
+        this.itemSprite = sprite;
+        this.slotLocation = slotLocation;
+        this.attackAreaSimple = attackAreaSimple;
+        this.attackAreaLourde = attackAreaLourde;
+    }
+
+    public Item(string name, string description, Sprite sprite, int slotLocation, GameObject attackAreaSimple, GameObject attackAreaLourde, GameObject object3d)
+    {
+        this.itemName = name;
+        this.itemDescription = description;
+        this.itemSprite = sprite;
+        this.slotLocation = slotLocation;
+        this.attackAreaSimple = attackAreaSimple;
+        this.attackAreaLourde = attackAreaLourde;
+        this.objectInScene = object3d;
     }
 
 }

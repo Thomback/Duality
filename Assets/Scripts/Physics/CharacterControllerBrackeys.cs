@@ -173,7 +173,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
 
-        // Multiply the player's x local scale by -1.
+        // Change the player direction by rotating his model
         var rotationVector = transform.rotation.eulerAngles;
         rotationVector.y += 180;
         transform.rotation = Quaternion.Euler(rotationVector);
