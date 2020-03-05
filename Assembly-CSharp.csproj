@@ -66,11 +66,15 @@
     <Compile Include="Assets\Scripts\Combat\Stats\BattleStats.cs" />
     <Compile Include="Assets\Scripts\Combat\attackArea.cs" />
     <Compile Include="Assets\Scripts\Combat\hurtPlayer.cs" />
+    <Compile Include="Assets\Scripts\Environment\Door\DoorManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\Door\MeIsDoor.cs" />
+    <Compile Include="Assets\Scripts\Environment\Door\triggerCheck.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemList.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemSlots.cs" />
     <Compile Include="Assets\Scripts\Inventory\Weapon.cs" />
     <Compile Include="Assets\Scripts\Physics\CharacterControllerBrackeys.cs" />
+    <Compile Include="Assets\Scripts\Physics\Ennemies\BasicController.cs" />
     <Compile Include="Assets\Scripts\Physics\PlayerMovementBrackeys.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

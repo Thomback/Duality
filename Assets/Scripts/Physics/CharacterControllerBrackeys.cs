@@ -161,9 +161,10 @@ public class CharacterControllerBrackeys : MonoBehaviour
         if (m_Grounded && jump)
         {
             // Add a vertical force to the player.
-            Jump();
             //m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
+
+            Jump();
         }
     }
 

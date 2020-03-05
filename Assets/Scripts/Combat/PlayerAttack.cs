@@ -28,7 +28,6 @@ public class PlayerAttack : MonoBehaviour
             battleStats = GetComponent<BattleStats>();
         if(itemList.Equals(null))
             itemList = GameObject.FindWithTag("GameController").GetComponent<ItemList>();
-        Debug.Log(itemList.items[0].attackAreaSimple);
     }
 
     public float attack1()
