@@ -8,8 +8,7 @@ public class HealthBar : MonoBehaviour
     public Slider slider;
     public BattleStats statsJoueur;
     public TMPro.TextMeshProUGUI TexMex;
-
-    static float t = 0.0f;
+    
 
     // Update is called once per frame
     void Update()
@@ -20,7 +19,7 @@ public class HealthBar : MonoBehaviour
 
         if(slider.value > statsJoueur.currentHP)
         {
-            slider.value -= 0.2f;
+            slider.value -= 0.5f;
         }
     }
 }

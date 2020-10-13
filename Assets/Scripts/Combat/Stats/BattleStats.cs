@@ -19,6 +19,9 @@ public class BattleStats : MonoBehaviour
     [Tooltip("Entity's incoming damage reduction in percentage")]
     [HideInInspector]
     public float dmgReduction = 0;          // Entity's incoming damage reduction in percentage
+    [HideInInspector]
+    public bool dead = false;               // Is the entity dead?
+
 
     [Header("Offensive stats")]
     [Tooltip("Entity's base attack damage")]
@@ -30,7 +33,7 @@ public class BattleStats : MonoBehaviour
     [HideInInspector]
     public float attackDamageIncrease = 0;    // Entity's attack damage increase in percentage
     [Tooltip("Entity's attack cooldown")]
-    public float attackDelay = 0.5f;            // Entity's attack cooldown
+    public float attackDelay = 0.5f;          // Entity's attack cooldown
     [Tooltip("Entity's attack cooldown")]
     [HideInInspector]
     public float attackDelayDecrease = 0f;    // Entity's attack delay decrease in percentage
@@ -51,16 +54,33 @@ public class BattleStats : MonoBehaviour
     public float flatJumpForceIncrease = 0;   // Entity's jump force flat increase
     [Tooltip("Entity's jump force increase in percentage")]
     [HideInInspector]
-    public float JumpForceIncrease = 0;       // Entity's jump force increase in percentage
+    public float jumpForceIncrease = 0;       // Entity's jump force increase in percentage
+    [HideInInspector]
+    public enum unitWeight {
+        Light,
+        Medium,
+        Heavy
+    }
+    [Tooltip("Entity's weight")]
+    public unitWeight weight = unitWeight.Medium; // Entity's jump force increase in percentage
 
     [HideInInspector]
     public bool invicibilityFrames;
 
 
+    private float knockBackCoefficient;
+
     // Start is called before the first frame update
     void Awake()
     {
         currentHP = maxHP;
+
+        if (weight == unitWeight.Light)
+            knockBackCoefficient = 1.5f;
+        else if (weight == unitWeight.Medium)
+            knockBackCoefficient = 1;
+        else
+            knockBackCoefficient = 0.5f;
     }
 
 
@@ -83,6 +103,11 @@ public class BattleStats : MonoBehaviour
             else
             {
                 this.currentHP -= Mathf.FloorToInt((totalAttackDamage - this.flatDmgReduction) / this.dmgReduction);
+            }
+
+            if (this.currentHP <= 0)
+            {
+                Die();
             }
         }
     }
@@ -108,17 +133,17 @@ public class BattleStats : MonoBehaviour
 
     public float finalAttackDelay()
     {
-        return Mathf.CeilToInt(this.attackDelay - (this.attackDelay * (this.attackDelayDecrease / 100)));
+        return (this.attackDelay - (this.attackDelay * (this.attackDelayDecrease / 100)));
     }
 
     public float finalRunSpeed()
     {
-        return Mathf.CeilToInt((this.runSpeed + this.flatRunSpeedIncrease) + ((this.runSpeed + this.flatRunSpeedIncrease) * (this.runSpeedIncrease / 100)));
+        return (this.runSpeed + this.flatRunSpeedIncrease) + ((this.runSpeed + this.flatRunSpeedIncrease) * (this.runSpeedIncrease / 100));
     }
 
     public float finalJumpForce()
     {
-        return Mathf.CeilToInt((this.jumpForce + flatJumpForceIncrease) + ((this.jumpForce + this.flatJumpForceIncrease) * (this.JumpForceIncrease / 100)));
+        return (this.jumpForce + flatJumpForceIncrease) + ((this.jumpForce + this.flatJumpForceIncrease) * (this.jumpForceIncrease / 100));
     }
 
     public void resetModifiers()
@@ -130,7 +155,7 @@ public class BattleStats : MonoBehaviour
             = this.flatRunSpeedIncrease
             = this.runSpeedIncrease
             = this.flatJumpForceIncrease
-            = this.JumpForceIncrease
+            = this.jumpForceIncrease
             = this.attackDelayDecrease
             = this.flatMaxHPIncrease
             = this.maxHPIncrease
@@ -147,35 +172,61 @@ public class BattleStats : MonoBehaviour
         if (!this.invicibilityFrames)
         {
             this.invicibilityFrames = true;
+            Physics2D.IgnoreLayerCollision(9, 10, true);          // Ignore Player and Entity collision
             StartCoroutine(waitThenStopInvicibility(seconds));
         }
     }
 
-    public void hitStun(GameObject hurtSource)
+    public void hitStun(GameObject hurtSource, float knockBack, float hitStunSeconds)
     {
         if (!this.invicibilityFrames)
         {
-            GetComponent<PlayerMovementBrackeys>().enabled = false;
-            if(hurtSource.transform.position.x >= transform.position.x)
+            if (gameObject.tag == "Player")
+                GetComponent<PlayerMovementBrackeys>().enabled = false;
+            else
+                GetComponent<EnnemyMovement>().enabled = false;
+
+            if (hurtSource.transform.position.x >= transform.position.x)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(-7f, 10f);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(-7f * knockBack * knockBackCoefficient, 10f * knockBack * knockBackCoefficient);
             }else{
-                GetComponent<Rigidbody2D>().velocity = new Vector2(7f, 10f);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(7f * knockBack * knockBackCoefficient, 10f * knockBack * knockBackCoefficient);
             }
-            GetComponent<CharacterControllerBrackeys>().Jump();
-            StartCoroutine(waitThenEnableMovement());
+
+            if(knockBack > 0)
+            {
+                if (gameObject.tag == "Player")
+                    GetComponent<CharacterControllerBrackeys>().Jump();
+                else
+                    GetComponent<EnnemyController>().Jump();
+            }
+
+            StopCoroutine(waitThenEnableMovement(0));
+            StartCoroutine(waitThenEnableMovement(hitStunSeconds));
         }
+    }
+
+    public void Die()
+    {
+        if (currentHP > 0)
+            currentHP = 0;
+        dead = true;
     }
 
     private IEnumerator waitThenStopInvicibility(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         this.invicibilityFrames = false;
+        Physics2D.IgnoreLayerCollision(9, 10, false);          // Enable Player and Entity collision
+        
     }
 
-    private IEnumerator waitThenEnableMovement()
+    private IEnumerator waitThenEnableMovement(float hitStunSeconds)
     {
-        yield return new WaitForSeconds(0.35f);
-        GetComponent<PlayerMovementBrackeys>().enabled = true;
+        yield return new WaitForSeconds(hitStunSeconds);
+        if (gameObject.tag == "Player")
+            GetComponent<PlayerMovementBrackeys>().enabled = true;
+        else
+            GetComponent<EnnemyMovement>().enabled = true;
     }
 }

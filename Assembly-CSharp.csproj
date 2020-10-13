@@ -62,10 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Combat\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Animation\animationPause.cs" />
+    <Compile Include="Assets\Scripts\Combat\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Combat\Player\attackArea.cs" />
+    <Compile Include="Assets\Scripts\Combat\Player\hurtPlayer.cs" />
     <Compile Include="Assets\Scripts\Combat\Stats\BattleStats.cs" />
-    <Compile Include="Assets\Scripts\Combat\attackArea.cs" />
-    <Compile Include="Assets\Scripts\Combat\hurtPlayer.cs" />
     <Compile Include="Assets\Scripts\Environment\Door\DoorManager.cs" />
     <Compile Include="Assets\Scripts\Environment\Door\MeIsDoor.cs" />
     <Compile Include="Assets\Scripts\Environment\Door\triggerCheck.cs" />
@@ -74,8 +75,10 @@
     <Compile Include="Assets\Scripts\Inventory\ItemSlots.cs" />
     <Compile Include="Assets\Scripts\Inventory\Weapon.cs" />
     <Compile Include="Assets\Scripts\Physics\CharacterControllerBrackeys.cs" />
-    <Compile Include="Assets\Scripts\Physics\Ennemies\BasicController.cs" />
+    <Compile Include="Assets\Scripts\Physics\Ennemies\EnnemyController.cs" />
+    <Compile Include="Assets\Scripts\Physics\Ennemies\EnnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Physics\PlayerMovementBrackeys.cs" />
+    <Compile Include="Assets\Scripts\UI\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

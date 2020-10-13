@@ -10,7 +10,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
     private float m_RunSpeed = 60f;                                             // Amount of speed applied to the run movement
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
-    [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
+    [SerializeField] private float m_AirControl = 0.8f;                         // Coefficient at which a player can steer while jumping;
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
@@ -34,6 +34,8 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
+
+    private bool isFloating;
 
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
@@ -67,6 +69,11 @@ public class CharacterControllerBrackeys : MonoBehaviour
         }
 
         lastYPosition = transform.position.y;
+
+        if (battleStats.currentHP <=0)
+        {
+            anim.SetBool("isDead", true);
+        }
     }
 
     private void FixedUpdate()
@@ -107,7 +114,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
         }
 
         //only control the player if grounded or airControl is turned on
-        if (m_Grounded || m_AirControl)
+        if (m_Grounded || m_AirControl != 0)
         {
 
             // If crouching
@@ -139,10 +146,50 @@ public class CharacterControllerBrackeys : MonoBehaviour
                 }
             }
 
-            // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
-            // And then smoothing it out and applying it to the character
-            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            if (!isFloating)
+            {
+                // Move the character by finding the target velocity
+                Vector3 targetVelocity;
+
+                if (!m_Grounded)    // If in the air, adjust the speed
+                {
+                    if(m_Rigidbody2D.velocity.x + move * 10f * m_AirControl > move * 10f && move * 10f >= 0)
+                    {
+                        targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+                    }
+                    else if (m_Rigidbody2D.velocity.x + move * 10f * m_AirControl < move * 10f && move * 10f <= 0)
+                    {
+                        targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+                    }
+                    else
+                    {
+                        targetVelocity = new Vector2(m_Rigidbody2D.velocity.x + move * 10f * m_AirControl , m_Rigidbody2D.velocity.y);
+                    }
+                }
+                else
+                {
+                    if (m_Rigidbody2D.velocity.x + move * 10f > move * 10f && move * 10f >= 0)
+                    {
+                        targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+                    }
+                    else if (m_Rigidbody2D.velocity.x + move * 10f < move * 10f && move * 10f <= 0)
+                    {
+                        targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+                    }
+                    else
+                    {
+                        targetVelocity = new Vector2(m_Rigidbody2D.velocity.x + move * 10f, m_Rigidbody2D.velocity.y);
+                    }
+                }
+
+                // And then smoothing it out and applying it to the character
+                m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            }
+            else
+            {
+                m_Rigidbody2D.velocity = Vector3.zero;
+            }
+
 
             // If the input is moving the player right and the player is facing left...
             if (move > 0 && !m_FacingRight)
@@ -166,6 +213,15 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
             Jump();
         }
+    }
+
+    public void StopVelocity()
+    {
+        StopAllCoroutines();
+        isFloating = true;
+        m_Rigidbody2D.velocity = Vector2.zero;
+        StartCoroutine(Freeze());
+
     }
 
 
@@ -196,5 +252,13 @@ public class CharacterControllerBrackeys : MonoBehaviour
         m_Grounded = false;
         anim.SetBool("isGrounded", false);
         anim.SetTrigger("Jumping");
+    }
+
+
+    private IEnumerator Freeze()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isFloating = false;
+
     }
 }
