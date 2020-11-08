@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/JustinScenes/Menu.unity
+    guid: 07c706c7ee4d5844d9f9098db398c7e8
+  - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: 44f8d7ab6af4778448e55c71870859b7
   - enabled: 1
