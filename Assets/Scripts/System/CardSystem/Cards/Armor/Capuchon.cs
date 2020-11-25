@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Capuchon : CardParent
 {
-
     public new void HasBeenUsedLastRound()
     {
         throw new System.NotImplementedException();

@@ -14,6 +14,7 @@ public class Card : ScriptableObject
     [SerializeField]
     private CardType type;
     [SerializeField]
+    private CardParent cardScriptData = null;
     private CardParent cardScript = null;
     [SerializeField]
     private bool useOverrideScript = false;
@@ -37,6 +38,7 @@ public class Card : ScriptableObject
             throw new Exception("La classe associée '" + name + "' n'existe pas, vérifier que le nom de votre carte est correcte");
         }
         cardScript = (CardParent)System.Activator.CreateInstance(type);
+        cardScript.init(cardScriptData.value, cardScriptData.armorType, cardScriptData.magicType);
 
         // Si la method init a été appellée depuis une autre méthode, on relance cette méthode
         lastMethod?.Invoke();

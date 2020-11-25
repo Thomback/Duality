@@ -4,17 +4,15 @@
 public class CardParent
 {
     [SerializeField]
-    protected int value;
+    public int value;
 
-    protected enum ArmorType { upper, lower, both }
+    public enum ArmorType { upper, lower, both }
     [SerializeField]
-    protected ArmorType armorType;
+    public ArmorType armorType;
 
-    protected enum MagicType { Enchant, debuff, skill}
+    public enum MagicType { Enchant, debuff, skill}
     [SerializeField]
-    protected MagicType magicType;
-
-
+    public MagicType magicType;
 
     public virtual void use()
     {
@@ -24,5 +22,12 @@ public class CardParent
     public virtual void HasBeenUsedLastRound()
     {
         return;
+    }
+
+    public void init(int value, ArmorType armorType, MagicType magicType)
+    {
+        this.value = value;
+        this.armorType = armorType;
+        this.magicType = magicType;
     }
 }

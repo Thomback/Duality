@@ -10,9 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
-  m_Name: New Card
+  m_Name: Capuchon
   m_EditorClassIdentifier: 
-  name: Capuchon
+  name: capuchon
   description: 
   image: {fileID: 0}
   type: 0
+  cardScript:
+    value: 12
+    armorType: 0
+    magicType: 0
+  useOverrideScript: 1
