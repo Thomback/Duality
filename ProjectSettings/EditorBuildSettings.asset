@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Core.unity
     guid: 77831e3054b809c448c20f0318ccdc9e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/Transition1.unity
     guid: 504a11c252ce1e6499643bcff70ad2ff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/Couloir.unity
     guid: d55fefe7be4735943b64a4ad3427ba05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/Transition2.unity
     guid: 7205a3dcc1d295a428376c740f18df10
   m_configObjects: {}
