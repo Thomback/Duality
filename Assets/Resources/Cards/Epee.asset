@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
-  m_Name: Capuchon
+  m_Name: Epee
   m_EditorClassIdentifier: 
-  name: Capuchon
+  name: epee
   description: 
   image: {fileID: 0}
   type: 0
   cardScriptData:
-    value: 12
-    armorType: 2
+    value: 84
+    armorType: 0
     magicType: 0
-  useOverrideScript: 1
+  useOverrideScript: 0
