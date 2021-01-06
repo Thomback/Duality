@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerMovementBrackeys : MonoBehaviour
 {
-    
+    // cooldown heavy attack
+    public float startHeavyAttackCooldown;
+    private float heavyAttackCooldown;
+
     private bool isMoving;
 
     public CharacterControllerBrackeys controller;
@@ -25,11 +28,13 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
     private int memoireTampon = 0;          // Capacité mise en mémoire tampon
 
-
     private int waitedSeconds = 0;          // Seconds waited for our idle animations trigger
 
     private void Start()
     {
+        // cooldown heavy attack start
+        heavyAttackCooldown = startHeavyAttackCooldown;
+
         if (anim.Equals(null))
             anim = transform.GetChild(0).GetComponent<Animator>();
         if (playerAttack.Equals(null))
@@ -40,6 +45,9 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
     void Update()
     {
+        // cooldown heavy attack 
+        heavyAttackCooldown -= Time.deltaTime;
+
         if (hasControl)
         {
             if (canMove)
@@ -71,8 +79,9 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 }
 
                 // Attaque lourde
-                else if (Input.GetButtonDown("Fire2"))
+                else if (Input.GetButtonDown("Fire2") && heavyAttackCooldown <= 0)
                 {
+                    heavyAttackCooldown = startHeavyAttackCooldown;
                     launchAttack2();
                 }
 
@@ -98,8 +107,11 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 {
                     if (Input.GetButton("Fire1"))
                         memoireTampon = 1;
-                    else if (Input.GetButton("Fire2"))
-                        memoireTampon = 2;
+                    else if (Input.GetButton("Fire2") && heavyAttackCooldown <= 0)
+                        {
+                            heavyAttackCooldown = startHeavyAttackCooldown;
+                            memoireTampon = 2;
+                        }
                     else if (Input.GetButton("Ability1"))
                         memoireTampon = 3;
                     else if (Input.GetButton("Ability2"))

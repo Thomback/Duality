@@ -18,12 +18,10 @@ public class PlayerAttack : MonoBehaviour
 
     private GameObject temp;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        if(itemSlots.Equals(null))
+        if (itemSlots.Equals(null))
             itemSlots = GetComponent<ItemSlots>();
         if(anim.Equals(null))
             anim = transform.GetChild(0).GetComponent<Animator>();
@@ -35,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        // combo
         if (comboCounter > 0)
         {
             timer += Time.deltaTime;
@@ -101,8 +100,6 @@ public class PlayerAttack : MonoBehaviour
             case 1:
                 anim.SetBool("IsM2Released", false);
                 anim.Play("DoubleHandSlash start");
-
-                
 
                 return battleStats.finalAttackDelay();
             default:
