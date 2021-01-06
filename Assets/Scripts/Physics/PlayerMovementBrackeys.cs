@@ -6,7 +6,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
 {
     // cooldown heavy attack
     public float startHeavyAttackCooldown;
-    private float heavyAttackCooldown;
+    public float heavyAttackCooldown;
 
     private bool isMoving;
 
@@ -33,7 +33,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     private void Start()
     {
         // cooldown heavy attack start
-        heavyAttackCooldown = startHeavyAttackCooldown;
+        heavyAttackCooldown = 0f;
 
         if (anim.Equals(null))
             anim = transform.GetChild(0).GetComponent<Animator>();
@@ -45,7 +45,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
     void Update()
     {
-        // cooldown heavy attack 
+        // cooldown heavy attack
         heavyAttackCooldown -= Time.deltaTime;
 
         if (hasControl)
@@ -123,8 +123,9 @@ public class PlayerMovementBrackeys : MonoBehaviour
                     if(memoireTampon == 1)
                     {
                         launchAttack1();
-                    }else if(memoireTampon == 2)
+                    }else if(memoireTampon == 2 && heavyAttackCooldown <= 0)
                     {
+                        heavyAttackCooldown = startHeavyAttackCooldown;
                         launchAttack2();
                     }
                     else if (memoireTampon == 3)
@@ -197,7 +198,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     private void launchAttack1() {
-        Debug.Log("Attaque simple");
+        //Debug.Log("Attaque simple");
 
         startTimeBtwAttack = playerAttack.attack1();
         timeBtwAttack = startTimeBtwAttack;
@@ -208,7 +209,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     private void launchAttack2() {
-        Debug.Log("Attaque lourde");
+        //Debug.Log("Attaque lourde");
         playerAttack.attack2();
 
         StopAllCoroutines();
@@ -217,7 +218,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     private void launchAbility1() {
-        Debug.Log("Equipement 1");
+        //Debug.Log("Equipement 1");
 
         startTimeBtwAttack = playerAttack.ability1();
         timeBtwAttack = startTimeBtwAttack;
@@ -226,7 +227,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     private void launchAbility2() {
-        Debug.Log("Equipement 2");
+        //Debug.Log("Equipement 2");
 
         startTimeBtwAttack = playerAttack.ability2();
         timeBtwAttack = startTimeBtwAttack;
