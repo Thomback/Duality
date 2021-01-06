@@ -147,12 +147,12 @@ public class PlayerMovementBrackeys : MonoBehaviour
             }
         }
 
-        Debug.Log("Is player dead? :" + battleStats.dead);
+        //Debug.Log("Is player dead? :" + battleStats.dead);
         // Check if the player died, and if he still has control
         if (battleStats.dead)
         {
             hasControl = false;
-            Debug.Log(gameObject.name + " is dead.");
+            //Debug.Log(gameObject.name + " is dead.");
         }
     }
 
