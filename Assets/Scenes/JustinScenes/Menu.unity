@@ -3778,5 +3778,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0ed3628010cd34fab6cdd1e462d869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
-  resolutionDropdown: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 407c8698b3fa110479511be6490924ae, type: 2}
+  resolutionDropdown: {fileID: 1323747203}
