@@ -18,6 +18,7 @@ MonoBehaviour:
   type: 0
   cardScriptData:
     value: 12
-    armorType: 2
+    armorType: 1
     magicType: 0
+    usableOnTime: 0
   useOverrideScript: 1

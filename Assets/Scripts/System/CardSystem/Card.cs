@@ -10,7 +10,9 @@ public class Card : ScriptableObject
     public new string name;
     public string description;
     public Sprite image;
-    public enum CardType { Armor, Weapon, Magic}
+    public enum CardType { Armor, Weapon, Magic }
+    public CardType cardType { get { return type; } }
+    public int value { get { return cardScriptData.value; } }
     [SerializeField]
     private CardType type;
     [SerializeField]
@@ -36,7 +38,7 @@ public class Card : ScriptableObject
         {
             throw new Exception("La classe associée '" + name + "' n'existe pas, vérifier que le nom de votre carte est correcte");
         }
-        cardScript = (CardParent)System.Activator.CreateInstance(type);
+        cardScript = (CardParent)Activator.CreateInstance(type);
         cardScript.init(cardScriptData.value, cardScriptData.armorType, cardScriptData.magicType);
 
         // Si la method init a été appellée depuis une autre méthode, on relance cette méthode

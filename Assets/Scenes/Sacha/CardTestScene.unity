@@ -238,6 +238,7 @@ MonoBehaviour:
   deck: {fileID: 1813711315}
   deadDeck: {fileID: 976738114}
   currentHand: {fileID: 1483939137}
+  currentCardLimit: 5
 --- !u!4 &353818839
 Transform:
   m_ObjectHideFlags: 0
@@ -861,6 +862,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a82c44eea52f2d240a4e1dc4e428793a, type: 2}
   - {fileID: 11400000, guid: 2702d281ad495fc45b199357e0a5cac0, type: 2}
   - {fileID: 11400000, guid: 8bc2e024c71dc2e4eae9cef8967aeb57, type: 2}
+  - {fileID: 11400000, guid: 4eae22bb41129b34fb4d64af9a10d077, type: 2}
   cardLimit: 40
 --- !u!4 &1813711316
 Transform:

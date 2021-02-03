@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
-  m_Name: Epee
+  m_Name: Test
   m_EditorClassIdentifier: 
-  name: epee
-  description: 
+  name: TestMagie
+  description: Permet rien pour l'instant jpp
   image: {fileID: 0}
-  type: 1
+  type: 2
   cardScriptData:
-    value: 84
+    value: 15
     armorType: 0
-    magicType: 0
+    magicType: 2
     usableOnTime: 0
   useOverrideScript: 0

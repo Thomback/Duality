@@ -10,11 +10,14 @@ public class DeckUI : MonoBehaviour
     public GameObject deadDeckHolder;
     public GameObject prefab;
 
+    Color[] cardColors = { Color.green, Color.red, Color.cyan};
+
     // Start is called before the first frame update
     void Start()
     {
         DeckManager.instance.deck.Shuffle();
-        for (int i = 0; i < 5 && i < DeckManager.instance.deck.cardCount; ++i)
+        int cardCount = DeckManager.instance.deck.cardCount;
+        for (int i = 0; i < 5 && i < cardCount; ++i)
         {
             DeckManager.instance.PickUpCard();
         }
@@ -59,10 +62,11 @@ public class DeckUI : MonoBehaviour
         for (int i = 0; i < cardsList.Count; i++)
         {
             GameObject go = Instantiate(prefab, holder.transform);
+            go.GetComponent<Image>().color = cardColors[(int)cardsList[i].cardType];
             go.transform.GetChild(0).GetComponent<Text>().text = cardsList[i].name;
             go.transform.GetChild(1).GetComponent<Image>().sprite = cardsList[i].image;
             go.transform.GetChild(2).GetComponent<Text>().text = "Description : " + cardsList[i].description;
-            go.transform.GetChild(3).GetComponent<Text>().text = "None";
+            go.transform.GetChild(3).GetComponent<Text>().text = cardsList[i].value.ToString();
         }
     }
 }
