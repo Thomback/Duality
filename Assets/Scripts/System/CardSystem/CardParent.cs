@@ -17,8 +17,22 @@ public class CardParent
     [SerializeField]
     bool usableOnTime;
 
+    Card parentCard;
+
     public virtual void use()
     {
+        switch (parentCard.cardType)
+        {
+            case Card.CardType.Armor:
+                
+                break;
+            case Card.CardType.Magic:
+
+                break;
+            case Card.CardType.Weapon:
+
+                break;
+        }
         Debug.Log("Je suis une carte classique");
     }
 
@@ -27,8 +41,9 @@ public class CardParent
         return;
     }
 
-    public void init(int value, ArmorType armorType, MagicType magicType)
+    public void init(Card parentCard, int value, ArmorType armorType, MagicType magicType)
     {
+        this.parentCard = parentCard;
         this.value = value;
         this.armorType = armorType;
         this.magicType = magicType;

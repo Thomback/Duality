@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Cards")]
 public class Card : ScriptableObject
 {
+    public int itemID = 0;
     // Nom de la carte et de la classe associé
     public new string name;
     public string description;
@@ -39,7 +40,7 @@ public class Card : ScriptableObject
             throw new Exception("La classe associée '" + name + "' n'existe pas, vérifier que le nom de votre carte est correcte");
         }
         cardScript = (CardParent)Activator.CreateInstance(type);
-        cardScript.init(cardScriptData.value, cardScriptData.armorType, cardScriptData.magicType);
+        cardScript.init(this, cardScriptData.value, cardScriptData.armorType, cardScriptData.magicType);
 
         // Si la method init a été appellée depuis une autre méthode, on relance cette méthode
         lastMethod?.Invoke();
