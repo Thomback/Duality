@@ -26,7 +26,6 @@ public class Card : ScriptableObject
     void Init()
     {
         overriedYet = true;
-        Debug.Log("Initialisation de la carte...");
         if (name == null)
         {
             throw new Exception("La carte n'est pas valide, elle ne possède pas de nom");
@@ -53,8 +52,6 @@ public class Card : ScriptableObject
             Init();
             return;
         }
-        Debug.Log(cardScript);
-        Debug.Log("Utilisation de la carte...");
         // Lance l'abilité de la carte
         cardScript.use();
         lastMethod = null;

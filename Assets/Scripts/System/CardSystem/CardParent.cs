@@ -14,6 +14,9 @@ public class CardParent
     [SerializeField]
     public MagicType magicType;
 
+    [SerializeField]
+    bool usableOnTime;
+
     public virtual void use()
     {
         Debug.Log("Je suis une carte classique");

@@ -4,34 +4,41 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-
+    [SerializeField]
     List<Card> deck = new List<Card>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField]
+    private int cardLimit = 40;
+    public int cardLimite {
+        get
+        {
+            return cardLimit;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Return the current count of cards
+    public int cardCount {
+        get
+            {
+                return deck.Count;
+            }
+        }
 
-    public void AddCard(Card card)
-    {
-        deck.Add(card);
-    }
-
+    // This function set the deck that will add the currentDeck
     public void SetDeck(List<Card> cards)
     {
-        deck = cards;
+        deck = new List<Card>(cards);
     }
 
+    // TODO :: Maybe should be removed
     public List<Card> getDeck()
     {
         return deck;
+    }
+
+    public void ClearDeck()
+    {
+        deck.Clear();
     }
 
     public void Shuffle()
@@ -47,11 +54,21 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public Card UseCard()
+    public Card PopCard()
     {
-        Card card = deck[0];
-        deck.Remove(card);
-        return card;
+        if (cardCount == 0) return null;
+        return deck[0];
     }
 
+    public void RemoveCard(Card card)
+    {
+        if (cardCount == 0) return;
+        deck.Remove(card);
+    }
+
+    public void AddCard(Card card)
+    {
+        if (cardCount == cardLimit) return;
+        deck.Add(card);
+    }
 }

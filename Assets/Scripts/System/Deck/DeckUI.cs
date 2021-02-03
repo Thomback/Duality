@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class DeckUI : MonoBehaviour
 {
-
-    public Deck deck;
-    public List<Card> cards = new List<Card>();
-
-    public GameObject holder;
+    public GameObject handHolder;
+    public GameObject deckHolder;
+    public GameObject deadDeckHolder;
     public GameObject prefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        deck.SetDeck(cards);
+        DeckManager.instance.deck.Shuffle();
+        for (int i = 0; i < 5 && i < DeckManager.instance.deck.cardCount; ++i)
+        {
+            DeckManager.instance.PickUpCard();
+        }
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -23,25 +26,36 @@ public class DeckUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Card currentCard = deck.UseCard();
-            currentCard.use();
+            if (DeckManager.instance.currentHand.cardCount == 0)
+            {
+                DeckManager.instance.FullHand();
+                UpdateUI();
+                return;
+            }
+            DeckManager.instance.UseCard();
             UpdateUI();
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+       /* if (Input.GetKeyDown(KeyCode.A))
         {
-            deck.Shuffle();
             UpdateUI();
-        }
+        }*/
     }
 
     void UpdateUI()
     {
-        while(holder.transform.childCount > 0)
+        UpdateDeck(deckHolder, DeckManager.instance.deck.getDeck());
+        UpdateDeck(handHolder, DeckManager.instance.currentHand.getDeck());
+        UpdateDeck(deadDeckHolder, DeckManager.instance.deadDeck.getDeck());
+    }
+
+    void UpdateDeck(GameObject holder, List<Card> cardsList)
+    {
+        int count = holder.transform.childCount - 1;
+        for (int i = count; i >= 0; i--)
         {
-            Destroy(holder.transform.GetChild(0));
+            Destroy(holder.transform.GetChild(i).gameObject);
         }
-        List<Card> cardsList = deck.getDeck();
         for (int i = 0; i < cardsList.Count; i++)
         {
             GameObject go = Instantiate(prefab, holder.transform);
