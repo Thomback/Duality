@@ -19,6 +19,7 @@ public class DeckUI : MonoBehaviour
         int cardCount = DeckManager.instance.deck.cardCount;
         for (int i = 0; i < 5 && i < cardCount; ++i)
         {
+            DeckManager.instance.deck.PopCard().Init();
             DeckManager.instance.PickUpCard();
         }
         UpdateUI();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [System.Serializable]
 public class CardParent
@@ -17,22 +18,18 @@ public class CardParent
     [SerializeField]
     bool usableOnTime;
 
+    ItemSlots itemSlots;
+
     Card parentCard;
 
     public virtual void use()
     {
-        switch (parentCard.cardType)
+        if (parentCard.cardType == Card.CardType.Magic)
         {
-            case Card.CardType.Armor:
-                
-                break;
-            case Card.CardType.Magic:
-
-                break;
-            case Card.CardType.Weapon:
-
-                break;
+            Debug.Log("Je suis une carte magique");
+            return;
         }
+        itemSlots.changeItem(parentCard.itemID);
         Debug.Log("Je suis une carte classique");
     }
 
@@ -43,6 +40,8 @@ public class CardParent
 
     public void init(Card parentCard, int value, ArmorType armorType, MagicType magicType)
     {
+        if(GameObject.FindWithTag("GameController") == null) throw new NullReferenceException("Il n'y a aucun object GameController sur cette scène");
+        itemSlots = GameObject.FindWithTag("GameController").GetComponent<ItemSlots>();
         this.parentCard = parentCard;
         this.value = value;
         this.armorType = armorType;

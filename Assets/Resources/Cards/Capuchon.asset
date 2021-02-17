@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Capuchon
   m_EditorClassIdentifier: 
-  name: Capuchon
-  description: 
-  image: {fileID: 0}
-  type: 0
+  itemID: 3
+  name: Casque en Cuir
+  description: "Ce casque n'est pas tr\xE8s resistant, mais c'est mieux que rien."
+  image: {fileID: 21300000, guid: 33bf6379bb300c64a9925db8eabffb2a, type: 3}
+  _type: 1
   cardScriptData:
     value: 12
     armorType: 1

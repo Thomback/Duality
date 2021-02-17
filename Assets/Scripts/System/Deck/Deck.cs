@@ -28,9 +28,13 @@ public class Deck : MonoBehaviour
     public void SetDeck(List<Card> cards)
     {
         deck = new List<Card>(cards);
+        foreach(Card card in deck)
+        {
+            card.Init();
+        }
     }
 
-    // TODO :: Maybe should be removed
+    // Warning, return a reference
     public List<Card> getDeck()
     {
         return deck;

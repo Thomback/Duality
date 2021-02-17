@@ -206,6 +206,150 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &101642644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101642646}
+  - component: {fileID: 101642645}
+  - component: {fileID: 101642647}
+  - component: {fileID: 101642648}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &101642645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101642644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01a9585eef66a044b5fdd5dc752dd45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - itemId: 1
+    itemName: "Ep\xE9e Courte"
+    itemDescription: "Attention, elle est rouill\xE9e."
+    itemSprite: {fileID: 21300000, guid: 9e2c93b0d3badea4da52b27ed2d88902, type: 3}
+    slotLocation: 0
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 2
+    itemName: Dague
+    itemDescription: "Une fine lame aiguis\xE9e. Un peu courte cependant."
+    itemSprite: {fileID: 21300000, guid: 2c7e4d8bc61bcc54b9f8c7fe32b4abee, type: 3}
+    slotLocation: 0
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 3
+    itemName: Capuche
+    itemDescription: Petit capuchon vert. Joli.
+    itemSprite: {fileID: 21300000, guid: 37b04ea956e05664d9ef35a338cd099e, type: 3}
+    slotLocation: 1
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 4
+    itemName: Casque en Cuir
+    itemDescription: "Ce casque n'est pas tr\xE8s resistant, mais c'est mieux que
+      rien."
+    itemSprite: {fileID: 21300000, guid: 33bf6379bb300c64a9925db8eabffb2a, type: 3}
+    slotLocation: 1
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 5
+    itemName: Pantalon
+    itemDescription: "C'est \xE9trange, ce pantalon poss\xE8de un design bien particulier,
+      il semblerait presque sorti d'une autre \xE9poque."
+    itemSprite: {fileID: 21300000, guid: 7e3580b8e7a780a46a6a749bb9f152f0, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 6
+    itemName: Bottes
+    itemDescription: "Ces botines vous vont \xE0 ravir!"
+    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+--- !u!4 &101642646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101642644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 57.011665, y: 240.96863, z: 13.914627}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &101642647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101642644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa73a4fd05a5e54caa2647be9e9e2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlot: 0
+  equipmentSlot1: 0
+  equipmentSlot2: 0
+  listeItems: {fileID: 101642645}
+--- !u!114 &101642648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101642644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a46704edba6cc4eb48d73fdd22af61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  flatMaxHPIncrease: 0
+  maxHPIncrease: 0
+  currentHP: 0
+  flatDmgReduction: 0
+  dmgReduction: 0
+  dead: 0
+  attackDamage: 10
+  flatAttackDamageIncrease: 0
+  attackDamageIncrease: 0
+  attackDelay: 0.4
+  attackDelayDecrease: 0
+  runSpeed: 60
+  flatRunSpeedIncrease: 0
+  runSpeedIncrease: 0
+  jumpForce: 20
+  flatJumpForceIncrease: 0
+  jumpForceIncrease: 0
+  weight: 1
+  invicibilityFrames: 0
 --- !u!1 &353818837
 GameObject:
   m_ObjectHideFlags: 0
