@@ -337,6 +337,7 @@ MonoBehaviour:
   flatDmgReduction: 0
   dmgReduction: 0
   dead: 0
+  anim: {fileID: 0}
   attackDamage: 10
   flatAttackDamageIncrease: 0
   attackDamageIncrease: 0
@@ -376,7 +377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 353818837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de231f0fc827494d94cf6606ad97827, type: 3}
+  m_Script: {fileID: 11500000, guid: 28f13ebfb44149044b20e056359f0694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deck: {fileID: 1813711315}
@@ -1003,10 +1004,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck:
-  - {fileID: 11400000, guid: a82c44eea52f2d240a4e1dc4e428793a, type: 2}
+  - {fileID: 11400000, guid: 9d576bc778d04e043ab3b5aa8ca2e694, type: 2}
+  - {fileID: 11400000, guid: d9ae440e1554b5c43873ed988ef7efe6, type: 2}
+  - {fileID: 11400000, guid: 3671a3b6cdcc56d40ad120a7c44f56a9, type: 2}
   - {fileID: 11400000, guid: 2702d281ad495fc45b199357e0a5cac0, type: 2}
-  - {fileID: 11400000, guid: 8bc2e024c71dc2e4eae9cef8967aeb57, type: 2}
-  - {fileID: 11400000, guid: 4eae22bb41129b34fb4d64af9a10d077, type: 2}
   cardLimit: 40
 --- !u!4 &1813711316
 Transform:
@@ -1154,7 +1155,7 @@ MonoBehaviour:
   handHolder: {fileID: 1385043145}
   deckHolder: {fileID: 1212491901}
   deadDeckHolder: {fileID: 1834979170}
-  prefab: {fileID: 7789757458969413090, guid: 16fcbdcbc62c9a74c881119fee9a7212, type: 3}
+  prefab: {fileID: 7789757458969413090, guid: 937a7a28ccff0194988014361c26785f, type: 3}
 --- !u!4 &1985492051
 Transform:
   m_ObjectHideFlags: 0
