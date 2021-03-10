@@ -30,8 +30,16 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
     private int waitedSeconds = 0;          // Seconds waited for our idle animations trigger
 
+    // dash
+    bool dash = false;
+    private float dashTime;
+    public float StartDashTime;
+
     private void Start()
     {
+        //dash
+        dashTime = StartDashTime;
+
         // cooldown heavy attack start
         heavyAttackCooldown = 0f;
 
@@ -66,11 +74,37 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 {
                     crouch = false;
                 }
+
+                if (Input.GetButtonDown("Dash") && dashTime <= 0)
+                {
+                    Debug.Log("dashhhhhhhhhhh");
+                    dash = true;
+                    dashTime = StartDashTime;
+                }
+                else
+                {
+                    dashTime -= Time.deltaTime;
+                }
             }
+
+            //// DASH
+            //if (dashTime <= 0)
+            //{
+            //    if (Input.GetButtonDown("Dash"))
+            //    {
+            //        Debug.Log("dashhhhhhhhhhh");
+            //        dash = true;
+            //        dashTime = StartDashTime;
+            //    }
+            //}
+            //else
+            //{
+            //    dashTime -= Time.deltaTime;
+            //}
 
             // ----- Abilities -----
 
-            if(timeBtwAttack <= 0 && !holdingM2)
+            if (timeBtwAttack <= 0 && !holdingM2)
             {
                 // Attaque principale
                 if (Input.GetButtonDown("Fire1"))
@@ -193,8 +227,9 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 StartCoroutine(idleWaiter());
             }
         }
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dash);
         jump = false;
+        dash = false;
     }
 
     private void launchAttack1() {
