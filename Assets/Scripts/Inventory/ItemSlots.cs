@@ -55,14 +55,12 @@ public class ItemSlots : MonoBehaviour
 
         switch (equipmentSlot1)
         {
-
             default:
                 break;
         }
 
         switch (equipmentSlot2)
         {
-
             default:
                 break;
         }
