@@ -32,7 +32,7 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         if (instance != null)
         {

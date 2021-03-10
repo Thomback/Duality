@@ -1,0 +1,219 @@
+[33mcommit f80411daab80a161ff6d8e79dfa90a8dfd93a10f[m[33m ([m[1;36mHEAD -> [m[1;32mSacha[m[33m)[m
+Author: Sacha <sacha.eghiazarian@ynov.com>
+Date:   Wed Nov 25 17:46:23 2020 +0100
+
+    Mise à jour du systeme de carte, permettant de passer les données du model parent au modèles enfants + déplacement de la carte
+
+[33mcommit 04430dd8c0af34b09b9df160e7a48c07611c9b08[m
+Author: Sacha <sacha.eghiazarian@ynov.com>
+Date:   Wed Nov 25 16:53:08 2020 +0100
+
+    Ajout de la création de carte via scriptable object et héritage
+
+[33mcommit a8177d8c533acc65ff299a3f6bc3c479481d794a[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: e819d81 6aa4df4
+Author: Thomas <thomaslomb13@gmail.com>
+Date:   Wed Nov 4 15:18:30 2020 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit e819d81215b9aeba97529ed28c69c6fb6651e448[m
+Merge: caff36c 9cb8c5c
+Author: Thomas <thomaslomb13@gmail.com>
+Date:   Wed Nov 4 15:13:35 2020 +0100
+
+    Merge branch 'WorkInProgress'
+    
+    Merge + camera fix
+
+[33mcommit 6aa4df4291b3998ec987661d4f5f054de651f8a1[m
+Merge: caff36c 9cb8c5c
+Author: Thomas <thomaslomb13@gmail.com>
+Date:   Wed Nov 4 15:13:35 2020 +0100
+
+    Merge branch 'WorkInProgress'
+
+[33mcommit 9cb8c5c13ff9e604d0bf4c24df8710dea3332d6a[m[33m ([m[1;31morigin/WorkInProgress[m[33m)[m
+Merge: 9ee108f 615ef83
+Author: Thomas <thomaslomb13@gmail.com>
+Date:   Wed Nov 4 15:12:22 2020 +0100
+
+    Merge remote-tracking branch 'origin/WorkInProgress' into WorkInProgress
+
+[33mcommit 9ee108f7940f711d48d547840152cf94860e5938[m
+Author: Jojo <jcarly23@gmail.com>
+Date:   Wed Oct 14 14:06:59 2020 +0200
+
+    Remove files in gitignore
+
+[33mcommit caff36cc402944220047f19b6f3e8f6f7beb8b27[m
+Author: Jojo <jcarly23@gmail.com>
+Date:   Wed Oct 14 14:19:11 2020 +0200
+
+    Remove files in gitignore
+
+[33mcommit 615ef8303a171e4b23bb37f89774462fbd0621db[m
+Author: Jojo <jcarly23@gmail.com>
+Date:   Wed Oct 14 14:06:59 2020 +0200
+
+    Remove files in gitignore
+
+[33mcommit 2649d63cce6fef6dd50767dc220ca87d863dc7f4[m
+Merge: 20f9608 bf46bf8
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Tue Oct 13 15:57:16 2020 +0200
+
+    Merge remote-tracking branch 'origin/master' into WorkInProgress
+
+[33mcommit 20f9608be34341bb43477487883fe83ea8268bf5[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Tue Oct 13 15:12:40 2020 +0200
+
+    Presque v0
+    
+    - Amélioration système de combat (reste la disparition des ennemis dead à faire)
+    - amélioration des déplacements (mouvement + fluide)
+    - Changements importants organisation du code
+
+[33mcommit bf46bf8543505ee8e4fd8bbd234bbfb0912dd2df[m
+Author: jcarly <jcarly23@gmail.com>
+Date:   Fri Oct 9 16:54:53 2020 +0200
+
+    Create .gitignore
+
+[33mcommit 2e58820f49bebf46dbdb9519e277adc3bb070391[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Thu Mar 5 16:38:34 2020 +0100
+
+    Did I fix it?
+
+[33mcommit 5142acb97f6b0f6e8463170547dd595c5681fb60[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Fri Feb 21 00:51:32 2020 +0100
+
+    Primary attack and damage system
+    
+    Holy shit that was harder than I thought for no reason
+
+[33mcommit fca0f3c5da92907e593809acbd95c3bbfe931c8e[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Mon Feb 17 13:29:01 2020 +0100
+
+    ANIMATIONS WORKS
+    
+    Merci Alex le best
+
+[33mcommit 3a5e92fb5082b959deab49874bc098d22bd13e98[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Thu Feb 13 01:14:06 2020 +0100
+
+    Trucs
+
+[33mcommit 959750af4fab69fe00cae728273fb13bf58051a2[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Tue Feb 11 17:27:04 2020 +0100
+
+    Amelioration systeme de stats et Items
+    
+    Ajout des stat modifiers et de la liste des items
+
+[33mcommit 5476a4dcf227aa946a4920cddf7f1d56f0e21ad8[m
+Merge: c52efaf f163d31
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Tue Feb 11 09:53:48 2020 +0100
+
+    Merge branch 'WorkInProgress'
+
+[33mcommit f163d3130a6fdafe36e76e54570e4243c84de180[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Tue Feb 11 09:52:54 2020 +0100
+
+    Creation Work In Progress
+
+[33mcommit c52efafd89ba2b4de02eac02cf84c84514943c63[m
+Author: Thomback <thomaslomb13@gmail.com>
+Date:   Mon Feb 10 23:49:51 2020 +0100
+
+    Quelques changements sur les sauts
+    
+    Par contre on oublie les sauts allongés en fonction du temps pendant lequel la touche est appuyée c'est la merde. (A coder, et à jouer au final)
+
+[33mcommit 0098ffc277856456e80b929d609d843947d59783[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Mon Feb 10 17:12:00 2020 +0100
+
+    No changes but ok
+
+[33mcommit 14bc8d844c0cf550c187f7a473f7fd8b0cde0f30[m
+Author: Thomback <thomaslomb13@gmail.com>
+Date:   Mon Feb 10 03:12:50 2020 +0100
+
+    Amélioration interface
+    
+    Pas encore animée, mais jolie et transparente
+
+[33mcommit b53b23985641f54c20d19ae9e7104c3db1069786[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Fri Feb 7 17:23:22 2020 +0100
+
+    Amelioration prise de dmg et hitstun
+
+[33mcommit ced6ff95a1f3c4fe0be7f9dbb7dfd948eec683e9[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Thu Feb 6 11:31:37 2020 +0100
+
+    Ah non
+    
+    Les animations utilisent maintenant Any State, ce qui règle quelques petits bugs.
+
+[33mcommit 76454612c216776e565f6df1a25f5d9de06a5135[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Thu Feb 6 10:41:34 2020 +0100
+
+    Attention je vais peut-être checkout à cet endroit
+
+[33mcommit 54d8c36770c2117d1e3e00f60739229ab7b041a6[m
+Author: Thomback <thomaslomb13@gmail.com>
+Date:   Thu Feb 6 01:48:01 2020 +0100
+
+    Création Script PlayerAttack mais jui fatiguay
+
+[33mcommit 894f792e34abee2bb39e8b2ea066c4c8cf71a7af[m
+Author: Thomback <thomaslomb13@gmail.com>
+Date:   Thu Feb 6 01:36:29 2020 +0100
+
+    Push ups.
+
+[33mcommit e3f512b989a8e9ffe82ab0ff55692d6fa09ac2c4[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Wed Feb 5 19:11:17 2020 +0100
+
+    Idle Events et ajustements camera
+
+[33mcommit 4fb163204ab78524637707193dfe750f20644c1e[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Wed Feb 5 17:03:10 2020 +0100
+
+    Animations de base
+    
+    Mise en place des animations de base + du système de camera Cinemachine (vive cinemachine)
+
+[33mcommit e97859c6657db8e69b44e575dfaf3f5b8d944d54[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Tue Feb 4 10:46:04 2020 +0100
+
+    Vive Brackeys
+    
+    Changement de script de deplacement de personnage pour utiliser celui propose par Brackeys a ce lien https://youtu.be/dwcT-Dch0bA
+
+[33mcommit 189351086c2ae5d6944f3e24a041d5e99223729e[m
+Author: Thomas L <thomaslomb13@gmail.com>
+Date:   Mon Feb 3 10:50:22 2020 +0100
+
+    Creation Projet Unity
+
+[33mcommit 6bdefab45ef5460ff5fdd46dabad224214e6b002[m
+Author: Thomback <34674978+Thomback@users.noreply.github.com>
+Date:   Mon Feb 3 10:29:23 2020 +0100
+
+    Initial commit

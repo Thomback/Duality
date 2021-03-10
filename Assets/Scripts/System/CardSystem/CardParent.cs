@@ -41,7 +41,7 @@ public class CardParent
     public void init(Card parentCard, int value, ArmorType armorType, MagicType magicType)
     {
         if(GameObject.FindWithTag("GameController") == null) throw new NullReferenceException("Il n'y a aucun object GameController sur cette scène");
-        itemSlots = GameObject.FindWithTag("GameController").GetComponent<ItemSlots>();
+        itemSlots = GameObject.FindWithTag("Player").GetComponent<ItemSlots>();
         this.parentCard = parentCard;
         this.value = value;
         this.armorType = armorType;
