@@ -31,7 +31,6 @@ public class Card : ScriptableObject
     public void Init()
     {
         if (GameObject.FindWithTag("GameController") == null) throw new NullReferenceException("Il n'y a aucun object GameController sur cette scène");
-        Debug.Log("I'm initalising the card");
         overriedYet = true;
         // if itemID is -1 then the card is a magic one
         if (itemID != -1)
@@ -48,7 +47,6 @@ public class Card : ScriptableObject
             {
                 throw new Exception("Aucun item associé à cette carte");
             }
-            Debug.Log("Item Instance : " + itemInstance.itemName);
             // Get the value of the item and put it in the card
             name = itemInstance.itemName;
             description = itemInstance.itemDescription;
@@ -110,6 +108,10 @@ public class Card : ScriptableObject
             lastMethod = use;
             Init();
             return;
+        }
+        if (cardType != CardType.Magic)
+        {
+            GameObject.FindWithTag("GameController").GetComponent<ItemSlots>().changeItem(itemID);
         }
         // Lance l'abilité de la carte
         cardScript.use();
