@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class DeckUI : MonoBehaviour
 {
     public GameObject handHolder;
-    public GameObject deckHolder;
-    public GameObject deadDeckHolder;
     public GameObject prefab;
 
     Color[] cardColors = { Color.red, Color.green, Color.cyan};
@@ -39,18 +37,11 @@ public class DeckUI : MonoBehaviour
             DeckManager.instance.UseCard();
             UpdateUI();
         }
-
-       /* if (Input.GetKeyDown(KeyCode.A))
-        {
-            UpdateUI();
-        }*/
     }
 
     void UpdateUI()
     {
-        UpdateDeck(deckHolder, DeckManager.instance.deck.getDeck());
         UpdateDeck(handHolder, DeckManager.instance.currentHand.getDeck());
-        UpdateDeck(deadDeckHolder, DeckManager.instance.deadDeck.getDeck());
     }
 
     void UpdateDeck(GameObject holder, List<Card> cardsList)

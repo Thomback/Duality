@@ -48,6 +48,7 @@ public class ItemSlots : MonoBehaviour
             default:
                 break;
         }
+        GameObject.FindWithTag("UI").GetComponent<ItemSlotsUI>().UpdateSlots();
         itemModifiers();
     }
 
