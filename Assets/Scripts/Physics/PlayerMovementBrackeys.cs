@@ -172,7 +172,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
                     }
                     else
                     {
-                        ChangeControl(true);
+                        //ChangeControl(true);
                     }
                     memoireTampon = 0;
                 }
@@ -187,7 +187,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
                     StopAllCoroutines();
                     waitedSeconds = 0;
 
-                    ChangeControl(false);
+                    //ChangeControl(false);
 
                     holdingM2 = false;  
                 }
@@ -240,7 +240,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
         StopAllCoroutines();
         waitedSeconds = 0;
 
-        ChangeControl(false);
+        //ChangeControl(false);
     }
 
     private void launchAttack2() {
