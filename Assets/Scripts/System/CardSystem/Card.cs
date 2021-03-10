@@ -111,7 +111,7 @@ public class Card : ScriptableObject
         }
         if (cardType != CardType.Magic)
         {
-            GameObject.FindWithTag("GameController").GetComponent<ItemSlots>().changeItem(itemID);
+            GameObject.FindWithTag("Player").GetComponent<ItemSlots>().changeItem(itemID);
         }
         // Lance l'abilité de la carte
         cardScript.use();

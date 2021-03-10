@@ -10,7 +10,7 @@ public class DeckUI : MonoBehaviour
     public GameObject deadDeckHolder;
     public GameObject prefab;
 
-    Color[] cardColors = { Color.green, Color.red, Color.cyan};
+    Color[] cardColors = { Color.red, Color.green, Color.cyan};
 
     // Start is called before the first frame update
     void Start()

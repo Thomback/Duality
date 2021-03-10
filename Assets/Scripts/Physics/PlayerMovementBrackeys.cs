@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerMovementBrackeys : MonoBehaviour
 {
-    
+    // cooldown heavy attack
+    public float startHeavyAttackCooldown;
+    public float heavyAttackCooldown;
+
     private bool isMoving;
 
     public CharacterControllerBrackeys controller;
@@ -25,11 +28,21 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
     private int memoireTampon = 0;          // Capacité mise en mémoire tampon
 
-
     private int waitedSeconds = 0;          // Seconds waited for our idle animations trigger
+
+    // dash
+    bool dash = false;
+    private float dashTime;
+    public float StartDashTime;
 
     private void Start()
     {
+        //dash
+        dashTime = StartDashTime;
+
+        // cooldown heavy attack start
+        heavyAttackCooldown = 0f;
+
         if (anim.Equals(null))
             anim = transform.GetChild(0).GetComponent<Animator>();
         if (playerAttack.Equals(null))
@@ -40,6 +53,9 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
     void Update()
     {
+        // cooldown heavy attack
+        heavyAttackCooldown -= Time.deltaTime;
+
         if (hasControl)
         {
             if (canMove)
@@ -58,11 +74,37 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 {
                     crouch = false;
                 }
+
+                if (Input.GetButtonDown("Dash") && dashTime <= 0)
+                {
+                    Debug.Log("dashhhhhhhhhhh");
+                    dash = true;
+                    dashTime = StartDashTime;
+                }
+                else
+                {
+                    dashTime -= Time.deltaTime;
+                }
             }
+
+            //// DASH
+            //if (dashTime <= 0)
+            //{
+            //    if (Input.GetButtonDown("Dash"))
+            //    {
+            //        Debug.Log("dashhhhhhhhhhh");
+            //        dash = true;
+            //        dashTime = StartDashTime;
+            //    }
+            //}
+            //else
+            //{
+            //    dashTime -= Time.deltaTime;
+            //}
 
             // ----- Abilities -----
 
-            if(timeBtwAttack <= 0 && !holdingM2)
+            if (timeBtwAttack <= 0 && !holdingM2)
             {
                 // Attaque principale
                 if (Input.GetButtonDown("Fire1"))
@@ -71,8 +113,9 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 }
 
                 // Attaque lourde
-                else if (Input.GetButtonDown("Fire2"))
+                else if (Input.GetButtonDown("Fire2") && heavyAttackCooldown <= 0)
                 {
+                    heavyAttackCooldown = startHeavyAttackCooldown;
                     launchAttack2();
                 }
 
@@ -98,8 +141,11 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 {
                     if (Input.GetButton("Fire1"))
                         memoireTampon = 1;
-                    else if (Input.GetButton("Fire2"))
-                        memoireTampon = 2;
+                    else if (Input.GetButton("Fire2") && heavyAttackCooldown <= 0)
+                        {
+                            heavyAttackCooldown = startHeavyAttackCooldown;
+                            memoireTampon = 2;
+                        }
                     else if (Input.GetButton("Ability1"))
                         memoireTampon = 3;
                     else if (Input.GetButton("Ability2"))
@@ -111,8 +157,9 @@ public class PlayerMovementBrackeys : MonoBehaviour
                     if(memoireTampon == 1)
                     {
                         launchAttack1();
-                    }else if(memoireTampon == 2)
+                    }else if(memoireTampon == 2 && heavyAttackCooldown <= 0)
                     {
+                        heavyAttackCooldown = startHeavyAttackCooldown;
                         launchAttack2();
                     }
                     else if (memoireTampon == 3)
@@ -147,12 +194,12 @@ public class PlayerMovementBrackeys : MonoBehaviour
             }
         }
 
-        Debug.Log("Is player dead? :" + battleStats.dead);
+        //Debug.Log("Is player dead? :" + battleStats.dead);
         // Check if the player died, and if he still has control
         if (battleStats.dead)
         {
             hasControl = false;
-            Debug.Log(gameObject.name + " is dead.");
+            //Debug.Log(gameObject.name + " is dead.");
         }
     }
 
@@ -180,12 +227,13 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 StartCoroutine(idleWaiter());
             }
         }
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dash);
         jump = false;
+        dash = false;
     }
 
     private void launchAttack1() {
-        Debug.Log("Attaque simple");
+        //Debug.Log("Attaque simple");
 
         startTimeBtwAttack = playerAttack.attack1();
         timeBtwAttack = startTimeBtwAttack;
@@ -196,7 +244,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     private void launchAttack2() {
-        Debug.Log("Attaque lourde");
+        //Debug.Log("Attaque lourde");
         playerAttack.attack2();
 
         StopAllCoroutines();
@@ -205,7 +253,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     private void launchAbility1() {
-        Debug.Log("Equipement 1");
+        //Debug.Log("Equipement 1");
 
         startTimeBtwAttack = playerAttack.ability1();
         timeBtwAttack = startTimeBtwAttack;
@@ -214,7 +262,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     private void launchAbility2() {
-        Debug.Log("Equipement 2");
+        //Debug.Log("Equipement 2");
 
         startTimeBtwAttack = playerAttack.ability2();
         timeBtwAttack = startTimeBtwAttack;
