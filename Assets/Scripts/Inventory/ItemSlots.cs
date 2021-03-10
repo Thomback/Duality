@@ -20,7 +20,17 @@ public class ItemSlots : MonoBehaviour
     public void changeItem(int newItem)
     {
         battleStats.resetModifiers();
-        switch (listeItems.items[newItem].slotLocation)
+        Item item = null;
+        for (int i = 0; i < listeItems.items.Length; ++i)
+        {
+            if (listeItems.items[i].itemId == newItem)
+            {
+                item = listeItems.items[i];
+            }
+        }
+        // Quitte le script si l'item n'est pas trouvé
+        if (item == null) return;
+        switch (item.slotLocation)
         {
             case 0:
                 weaponSlot = newItem;
