@@ -102,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
                 break;
             case 2: // Hache TEST
                 anim.SetBool("IsM2Released", true);
-                anim.Play("DoubleHandSlash hit");
+                anim.Play("DoubleHandSlash");
 
                 Collider2D[] ennemiesToDamage;
                 // Si l'attaque de l'arme est en forme de sphere

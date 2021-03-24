@@ -576,7 +576,7 @@ Light:
   m_BounceIntensity: 0.5
   m_ColorTemperature: 4563
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 1.9063e-41, z: 0, w: -0.000000009022187}
+  m_BoundingSphereOverride: {x: NaN, y: 1.2041548e+13, z: 1.9204612e+31, w: 7.194098e+28}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1142,7 +1142,7 @@ Light:
   m_BounceIntensity: 1.5
   m_ColorTemperature: 20000
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 3.5044e-41, z: 0, w: -0.0000000040454324}
+  m_BoundingSphereOverride: {x: -2.1217715e+27, y: 1.82e-43, z: 0, w: 3.1e-44}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4007,7 +4007,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6727321440440903118, guid: aad882edecc9baf42b544a7243a9e6c2, type: 3}
+  - {fileID: 2100000, guid: 8370c71b386247b4391104606b6c4d65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5663,7 +5663,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 2112
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.07589524e+21, y: 7.8657017e+34, z: 7.6773555e+31,
+    w: 4.1578968e+21}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -6156,7 +6157,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 2112
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.82e-43, z: 0, w: 2.8e-44}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

@@ -22,8 +22,21 @@ public class CardParent
 
     Card parentCard;
 
+    public void init(Card parentCard, int value, ArmorType armorType, MagicType magicType)
+    {
+        if(GameObject.FindWithTag("GameController") == null) throw new NullReferenceException("Il n'y a aucun object GameController sur cette scène");
+        itemSlots = GameObject.FindWithTag("Player").GetComponent<ItemSlots>();
+        Debug.Log("Player :"+GameObject.FindWithTag("Player").name);
+        this.parentCard = parentCard;
+        this.value = value;
+        this.armorType = armorType;
+        this.magicType = magicType;
+    }
+
     public virtual void use()
     {
+        if(itemSlots == null)
+            itemSlots = GameObject.FindWithTag("Player").GetComponent<ItemSlots>();
         if (parentCard.cardType == Card.CardType.Magic)
         {
             Debug.Log("Je suis une carte magique");
@@ -37,13 +50,4 @@ public class CardParent
         return;
     }
 
-    public void init(Card parentCard, int value, ArmorType armorType, MagicType magicType)
-    {
-        if(GameObject.FindWithTag("GameController") == null) throw new NullReferenceException("Il n'y a aucun object GameController sur cette scène");
-        itemSlots = GameObject.FindWithTag("Player").GetComponent<ItemSlots>();
-        this.parentCard = parentCard;
-        this.value = value;
-        this.armorType = armorType;
-        this.magicType = magicType;
-    }
 }
