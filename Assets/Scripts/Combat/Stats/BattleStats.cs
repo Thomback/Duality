@@ -98,6 +98,10 @@ public class BattleStats : MonoBehaviour
         if (!this.invicibilityFrames)
         {
             this.currentHP = this.currentHP - Mathf.CeilToInt((totalAttackDamage - this.flatDmgReduction) - ((totalAttackDamage - this.flatDmgReduction) * this.dmgReduction));
+            if(gameObject.tag == "Player")
+            {
+                screenShake.Instance.ShakeCamera(5f, .1f);
+            }
 
             if (currentHP <= 0)
             {
