@@ -10,6 +10,8 @@ public class GamePlaySwitcher : MonoBehaviour
     DeckUI deckUI;
     float timer = 0.0f;
 
+    public int timeBeforeSwitch = 30;
+
     Coroutine currentCoroutine = null;
 
     // Start is called before the first frame update
@@ -52,7 +54,7 @@ public class GamePlaySwitcher : MonoBehaviour
     IEnumerator WaitForSwitch()
     {
         chaosControl = false;
-        yield return new WaitForSecondsRealtime(9);
+        yield return new WaitForSecondsRealtime(timeBeforeSwitch - 1);
         chaosControl = true;
     }
 
