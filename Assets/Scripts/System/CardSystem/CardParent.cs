@@ -29,7 +29,6 @@ public class CardParent
             Debug.Log("Je suis une carte magique");
             return;
         }
-        itemSlots.changeItem(parentCard.itemID);
     }
 
     public virtual void HasBeenUsedLastRound()

@@ -90,7 +90,14 @@ public class DeckManager : MonoBehaviour
     {
         if (currentHand.cardCount == 0) return;
         Card currentCard = currentHand.PopCard(position);
-        currentCard.use();
+        if (currentCard.cardType == Card.CardType.Magic)
+        {
+            currentCard.use();
+        }
+        else
+        {
+            currentCard.equip();
+        }
         currentHand.RemoveCard(currentCard);
         deadDeck.AddCard(currentCard);
     }
