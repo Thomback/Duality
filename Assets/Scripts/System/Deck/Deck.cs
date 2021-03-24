@@ -64,6 +64,12 @@ public class Deck : MonoBehaviour
         return deck[0];
     }
 
+    public Card PopCard(int index)
+    {
+        if (cardCount == 0 || index < 0 || index >= deck.Count) return null;
+        return deck[index];
+    }
+
     public void RemoveCard(Card card)
     {
         if (cardCount == 0) return;
