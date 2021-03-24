@@ -1363,6 +1363,7 @@ GameObject:
   - component: {fileID: 722670739}
   - component: {fileID: 722670738}
   - component: {fileID: 722670737}
+  - component: {fileID: 722670744}
   m_Layer: 9
   m_Name: Peasant (1)
   m_TagString: Enemy
@@ -1417,6 +1418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b2ba7394849c942a6efa52d4a2e358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInRange: 0
   behavior: 0
   controller: {fileID: 722670738}
 --- !u!70 &722670740
@@ -1508,6 +1510,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &722670744
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722670736}
+  m_Enabled: 1
+  m_Density: 5
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
 --- !u!1 &733962000
 GameObject:
   m_ObjectHideFlags: 0
