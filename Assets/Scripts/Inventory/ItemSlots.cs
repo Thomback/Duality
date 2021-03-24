@@ -9,16 +9,16 @@ public class ItemSlots : MonoBehaviour
     public int equipmentSlot2 = 0;     //ID du deuxième equipement (bas du corps)
     public ItemList listeItems;
 
-    private BattleStats battleStats;
+    public BattleStats battleStats;
 
-    private void Start()
+    private void Awake()
     {
         battleStats = GetComponent<BattleStats>();
     }
 
     public void changeItem(int newItem)
     {
-        battleStats.resetModifiers();
+        this.battleStats.resetModifiers();
         Item item = null;
         for (int i = 0; i < listeItems.items.Length; ++i)
         {
