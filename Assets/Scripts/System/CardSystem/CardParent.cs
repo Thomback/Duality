@@ -30,7 +30,6 @@ public class CardParent
             return;
         }
         itemSlots.changeItem(parentCard.itemID);
-        Debug.Log("Je suis une carte classique");
     }
 
     public virtual void HasBeenUsedLastRound()

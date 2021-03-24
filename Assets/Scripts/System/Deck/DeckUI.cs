@@ -44,6 +44,11 @@ public class DeckUI : MonoBehaviour
         UpdateDeck(handHolder, DeckManager.instance.currentHand.getDeck());
     }
 
+    public void SwapHandUI(bool active)
+    {
+        handHolder.SetActive(active);
+    }
+
     void UpdateDeck(GameObject holder, List<Card> cardsList)
     {
         int count = holder.transform.childCount - 1;
