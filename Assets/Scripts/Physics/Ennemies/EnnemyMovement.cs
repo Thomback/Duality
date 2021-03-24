@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EnnemyMovement : MonoBehaviour
 {
@@ -14,6 +12,7 @@ public class EnnemyMovement : MonoBehaviour
         DashOut
     }
     public bool isInRange = false;
+    public bool rangeAttack = true;
     public ennemyBehavior behavior = ennemyBehavior.Zombie;
 
     public EnnemyController controller;
@@ -26,6 +25,11 @@ public class EnnemyMovement : MonoBehaviour
 
     private Transform playerPosition;
     private Transform myPosition;
+
+    public float pointDeVie;
+    public float percentCurrentHP;
+
+    public int intervalleMax;
 
     private void Start()
     {
@@ -42,17 +46,22 @@ public class EnnemyMovement : MonoBehaviour
     {   
         if (isInRange)
         {
+            pointDeVie = gameObject.GetComponent<BattleStats>().currentHP;
+            percentCurrentHP = (pointDeVie * 100) / 300;
             time -= Time.deltaTime;   
             if (time <= 0) 
             {
-                time = 10;
-                
-                float EventAttack = Random.Range(0, 2);
-                Debug.Log(EventAttack);
-                if (EventAttack == 1)
+                if(percentCurrentHP > 70) time = 3;
+                if (percentCurrentHP < 70 & percentCurrentHP > 50) time = 2;
+                if (percentCurrentHP < 50) time = 1;
+                if (rangeAttack == true) intervalleMax = 6;
+                if (rangeAttack == false) intervalleMax = 2;
+                float EventAttack = Random.Range(0, intervalleMax);
+                Debug.Log(intervalleMax);
+                if (EventAttack > 0 & rangeAttack == true)
                 {
                     GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
-                }
+                } 
                 if (EventAttack == 0)
                 {
                     behavior = ennemyBehavior.DashOut;
@@ -96,7 +105,7 @@ public class EnnemyMovement : MonoBehaviour
                         }
                         break;
                     case ennemyBehavior.DashOut:
-                        Debug.LogWarning("DASHOUT");
+                        Debug.Log("DASHOUT");
                         StartCoroutine(dashOut());
                         break;
                 }
@@ -108,9 +117,22 @@ public class EnnemyMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
+            rangeAttack = false;
+            CircleCollider2D collider = GetComponent<CircleCollider2D>();
+            collider.radius = 3;
             //Debug.Log("The ennemy can see the player");
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            rangeAttack = true;
+            //Debug.Log("The ennemy can see the player");
+        }
+    }
+
     private void FixedUpdate()
     {
         if (Mathf.Abs(horizontalMove) != 0)
@@ -134,9 +156,7 @@ public class EnnemyMovement : MonoBehaviour
     IEnumerator dashOut()
     {
         horizontalMove = 0;
-        Debug.LogWarning("He wait : " + time);
         yield return new WaitForSeconds(1);
-        Debug.LogWarning("TIME : " + time);
 
         gameObject.GetComponent<BattleStats>().attackDamage = 40;
 
