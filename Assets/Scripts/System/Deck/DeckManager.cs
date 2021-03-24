@@ -82,8 +82,14 @@ public class DeckManager : MonoBehaviour
     // Use the first card in the hand
     public void UseCard()
     {
+        UseCard(0);
+    }
+
+    // Use the first card in the hand
+    public void UseCard(int position)
+    {
         if (currentHand.cardCount == 0) return;
-        Card currentCard = currentHand.PopCard();
+        Card currentCard = currentHand.PopCard(position);
         currentCard.use();
         currentHand.RemoveCard(currentCard);
         deadDeck.AddCard(currentCard);

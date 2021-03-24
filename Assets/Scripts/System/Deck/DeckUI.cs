@@ -39,7 +39,7 @@ public class DeckUI : MonoBehaviour
         }
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         UpdateDeck(handHolder, DeckManager.instance.currentHand.getDeck());
     }
@@ -54,6 +54,9 @@ public class DeckUI : MonoBehaviour
         for (int i = 0; i < cardsList.Count; i++)
         {
             GameObject go = Instantiate(prefab, holder.transform);
+            CardPrefab cardPref = go.GetComponent<CardPrefab>();
+            cardPref.card = cardsList[i];
+            cardPref.position = i;
             go.GetComponent<Image>().color = cardColors[(int)cardsList[i].cardType];
             go.transform.GetChild(0).GetComponent<Text>().text = cardsList[i].name;
             go.transform.GetChild(1).GetComponent<Image>().sprite = cardsList[i].image;
