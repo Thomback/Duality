@@ -16,7 +16,6 @@ public class ItemSlots : MonoBehaviour
         battleStats = GetComponent<BattleStats>();
     }
 
-
     public void changeItem(int newItem)
     {
         battleStats.resetModifiers();
@@ -57,8 +56,16 @@ public class ItemSlots : MonoBehaviour
         switch (weaponSlot)
         {
             case 0:
-                battleStats.flatJumpForceIncrease += 10;
-                battleStats.attackDelay = 0.5f;
+                //battleStats.flatJumpForceIncrease += 10;
+                //battleStats.attackDelay = 0.5f;
+                break;
+            case 1:
+                battleStats.attackDamage = 2;
+                battleStats.attackDelay = 0.2f;
+                break;
+            case 2:
+                battleStats.attackDamage = 6;
+                battleStats.attackDelay = 0.8f;
                 break;
             default:
                 break;

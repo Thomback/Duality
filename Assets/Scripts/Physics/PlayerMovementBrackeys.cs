@@ -109,6 +109,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
                 // Attaque principale
                 if (Input.GetButtonDown("Fire1"))
                 {
+                    Debug.Log("attck :" + battleStats.attackDamage);
                     launchAttack1();
                 }
 
