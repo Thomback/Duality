@@ -16,11 +16,20 @@ public class ItemSlots : MonoBehaviour
         battleStats = GetComponent<BattleStats>();
     }
 
-
     public void changeItem(int newItem)
     {
         battleStats.resetModifiers();
-        switch (listeItems.items[newItem].slotLocation)
+        Item item = null;
+        for (int i = 0; i < listeItems.items.Length; ++i)
+        {
+            if (listeItems.items[i].itemId == newItem)
+            {
+                item = listeItems.items[i];
+            }
+        }
+        // Quitte le script si l'item n'est pas trouvé
+        if (item == null) return;
+        switch (item.slotLocation)
         {
             case 0:
                 weaponSlot = newItem;
@@ -38,6 +47,7 @@ public class ItemSlots : MonoBehaviour
             default:
                 break;
         }
+        GameObject.FindWithTag("UI").GetComponent<ItemSlotsUI>().UpdateSlots();
         itemModifiers();
     }
 
@@ -46,8 +56,16 @@ public class ItemSlots : MonoBehaviour
         switch (weaponSlot)
         {
             case 0:
-                battleStats.flatJumpForceIncrease += 10;
-                battleStats.attackDelay = 0.5f;
+                //battleStats.flatJumpForceIncrease += 10;
+                //battleStats.attackDelay = 0.5f;
+                break;
+            case 1:
+                battleStats.attackDamage = 2;
+                battleStats.attackDelay = 0.2f;
+                break;
+            case 2:
+                battleStats.attackDamage = 6;
+                battleStats.attackDelay = 0.8f;
                 break;
             default:
                 break;
@@ -55,14 +73,12 @@ public class ItemSlots : MonoBehaviour
 
         switch (equipmentSlot1)
         {
-
             default:
                 break;
         }
 
         switch (equipmentSlot2)
         {
-
             default:
                 break;
         }

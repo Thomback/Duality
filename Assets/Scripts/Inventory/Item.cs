@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Item
 {
-    [HideInInspector]
     public int itemId;
     public string itemName;
     public string itemDescription;

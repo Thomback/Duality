@@ -23,6 +23,14 @@ public class CharacterControllerBrackeys : MonoBehaviour
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
 
+    // dash
+    public float DashSpeed;
+
+    // jump
+    private float jumpTimeCounter;
+    public float jumpTime;
+    
+
     Animator anim;
     float lastYPosition;
     private BattleStats battleStats;
@@ -39,6 +47,8 @@ public class CharacterControllerBrackeys : MonoBehaviour
 
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
+
+  
 
     private void Awake()
     {
@@ -97,7 +107,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
     }
 
 
-    public void Move(float move, bool crouch, bool jump)
+    public void Move(float move, bool crouch, bool jump, bool dash)
     {
         move *= m_RunSpeed;
 
@@ -210,8 +220,16 @@ public class CharacterControllerBrackeys : MonoBehaviour
             // Add a vertical force to the player.
             //m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
-
             Jump();
+        }
+        // If the player should dash
+        if (dash && m_FacingRight)
+        {
+            m_Rigidbody2D.velocity = Vector2.right * DashSpeed;
+        }
+        else if (dash && !m_FacingRight)
+        {
+            m_Rigidbody2D.velocity = Vector2.left * DashSpeed;
         }
     }
 

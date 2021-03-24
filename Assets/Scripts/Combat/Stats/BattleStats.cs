@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleStats : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class BattleStats : MonoBehaviour
     [HideInInspector]
     public bool dead = false;               // Is the entity dead?
 
+    // healthbar
+    GameObject healthBar;
+
+    // anim
+    public Animator anim;
 
     [Header("Offensive stats")]
     [Tooltip("Entity's base attack damage")]
@@ -56,7 +62,8 @@ public class BattleStats : MonoBehaviour
     [HideInInspector]
     public float jumpForceIncrease = 0;       // Entity's jump force increase in percentage
     [HideInInspector]
-    public enum unitWeight {
+    public enum unitWeight
+    {
         Light,
         Medium,
         Heavy
@@ -75,6 +82,9 @@ public class BattleStats : MonoBehaviour
     {
         currentHP = maxHP;
 
+        if (anim.Equals(null))
+            anim = transform.GetChild(0).GetComponent<Animator>();
+
         if (weight == unitWeight.Light)
             knockBackCoefficient = 1.5f;
         else if (weight == unitWeight.Medium)
@@ -83,15 +93,21 @@ public class BattleStats : MonoBehaviour
             knockBackCoefficient = 0.5f;
     }
 
-
     public void takeDamage(float totalAttackDamage)
     {
         if (!this.invicibilityFrames)
         {
             this.currentHP = this.currentHP - Mathf.CeilToInt((totalAttackDamage - this.flatDmgReduction) - ((totalAttackDamage - this.flatDmgReduction) * this.dmgReduction));
+
+            if (currentHP <= 0)
+            {
+                //anim.SetBool("isDead", true);
+                destroyGameObject();
+            }
         }
-        Debug.Log("Ouch, il me reste " + this.currentHP + " pv.");
+        //Debug.Log("Ouch, il me reste " + this.currentHP + " pv.");
     }
+
     public void takeDamage(float totalAttackDamage, bool trueDamage)
     {
         if (!this.invicibilityFrames)
@@ -109,6 +125,20 @@ public class BattleStats : MonoBehaviour
             {
                 Die();
             }
+        }
+    }
+
+    public void destroyGameObject()
+    {
+        if (gameObject.tag == "Player")
+        {
+            //anim.SetBool("isDead", true);
+            SceneManager.LoadScene("Menu");
+            //Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -189,11 +219,13 @@ public class BattleStats : MonoBehaviour
             if (hurtSource.transform.position.x >= transform.position.x)
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(-7f * knockBack * knockBackCoefficient, 10f * knockBack * knockBackCoefficient);
-            }else{
+            }
+            else
+            {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(7f * knockBack * knockBackCoefficient, 10f * knockBack * knockBackCoefficient);
             }
 
-            if(knockBack > 0)
+            if (knockBack > 0)
             {
                 if (gameObject.tag == "Player")
                     GetComponent<CharacterControllerBrackeys>().Jump();
@@ -218,7 +250,7 @@ public class BattleStats : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         this.invicibilityFrames = false;
         Physics2D.IgnoreLayerCollision(9, 10, false);          // Enable Player and Entity collision
-        
+
     }
 
     private IEnumerator waitThenEnableMovement(float hitStunSeconds)
