@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class EnnemyMovement : MonoBehaviour
 {
+    // door
+    GameObject door;
+
     float time = 5;
     public enum ennemyBehavior
     {
@@ -33,6 +36,10 @@ public class EnnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        // door
+        door = GameObject.Find("Door");
+        door.SetActive(false);
+
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         myPosition = gameObject.GetComponent<Transform>();
 
@@ -116,6 +123,7 @@ public class EnnemyMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.CompareTag("Player"))
         {
+            door.SetActive(true);
             isInRange = true;
             rangeAttack = false;
             CircleCollider2D collider = GetComponent<CircleCollider2D>();
