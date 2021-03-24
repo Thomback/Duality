@@ -58,20 +58,23 @@ public class EnnemyMovement : MonoBehaviour
             time -= Time.deltaTime;   
             if (time <= 0) 
             {
-                if(percentCurrentHP > 70) time = 3;
-                if (percentCurrentHP < 70 & percentCurrentHP > 50) time = 2;
-                if (percentCurrentHP < 50) time = 1;
+                if(percentCurrentHP > 70) time = 2;
+                if (percentCurrentHP < 70 & percentCurrentHP > 50) time = 1;
+                if (percentCurrentHP < 50) time = 0.5f;
                 if (rangeAttack == true) intervalleMax = 6;
                 if (rangeAttack == false) intervalleMax = 2;
                 float EventAttack = Random.Range(0, intervalleMax);
                 Debug.Log(intervalleMax);
-                if (EventAttack > 0 & rangeAttack == true)
+                if (EventAttack > 0 & rangeAttack == true && canMove)
                 {
-                    GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
+                    canMove = !canMove;
+                    StartCoroutine(shootWait());
                 } 
-                if (EventAttack == 0)
+                if (EventAttack == 0 && canMove)
                 {
-                    behavior = ennemyBehavior.DashOut;
+                    canMove = !canMove;
+                    StartCoroutine(dashOut());
+                    //behavior = ennemyBehavior.DashOut;
                 }
             }
 
@@ -160,33 +163,45 @@ public class EnnemyMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
     }
+    IEnumerator shootWait()
+    {
+        horizontalMove = 0;
+        yield return new WaitForSeconds(0.7f);
+        GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
+        canMove = !canMove;
+    }
 
     IEnumerator dashOut()
     {
         horizontalMove = 0;
-        yield return new WaitForSeconds(1);
-
+        screenShake.Instance.ShakeCamera(1, 1.5f);
+        yield return new WaitForSeconds(0.3f);
         gameObject.GetComponent<BattleStats>().attackDamage = 40;
 
         if (myPosition.position.x - 0.1 > playerPosition.position.x)
         {
-            horizontalMove = 8;
-            yield return new WaitForSeconds(1);
+            horizontalMove = 1;
+            yield return new WaitForSeconds(1.2f);
+            screenShake.Instance.ShakeCamera(2, 1.5f);
             horizontalMove = -8;
         }
         else if (myPosition.position.x + 0.1 < playerPosition.position.x)
         {
-            horizontalMove = -8;
-            yield return new WaitForSeconds(1);
+            horizontalMove = -1;
+            yield return new WaitForSeconds(1.2f);
+            screenShake.Instance.ShakeCamera(2, 1.5f);
             horizontalMove = 8;
         }
         else
         {
             horizontalMove = 0;
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         gameObject.GetComponent<BattleStats>().attackDamage = 15;
-        behavior = ennemyBehavior.Zombie;
+
+        canMove = !canMove;
+
+        //behavior = ennemyBehavior.Zombie;
 
     }
 
