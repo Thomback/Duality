@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class EnnemyMovement : MonoBehaviour
 {
+
+    // door
+    GameObject door;
+
     float time = 5;
     public enum ennemyBehavior
     {
@@ -13,6 +17,7 @@ public class EnnemyMovement : MonoBehaviour
         Pogozombie,
         DashOut
     }
+
     public bool isInRange = false;
     public ennemyBehavior behavior = ennemyBehavior.Zombie;
 
@@ -29,6 +34,12 @@ public class EnnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        // door
+        door = GameObject.Find("Door");
+        door.SetActive(false);
+
+
+        // static
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         myPosition = gameObject.GetComponent<Transform>();
 
@@ -107,10 +118,13 @@ public class EnnemyMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.CompareTag("Player"))
         {
+            door.SetActive(true);
+
             isInRange = true;
             //Debug.Log("The ennemy can see the player");
         }
     }
+
     private void FixedUpdate()
     {
         if (Mathf.Abs(horizontalMove) != 0)
