@@ -98,6 +98,8 @@ public class PlayerAttack : MonoBehaviour
         switch (itemSlots.weaponSlot)
         {
             case 1:
+                return battleStats.finalAttackDelay();
+                break;
             case 2: // Hache TEST
                 anim.SetBool("IsM2Released", true);
                 anim.Play("DoubleHandSlash hit");
@@ -124,10 +126,11 @@ public class PlayerAttack : MonoBehaviour
                         ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, 0.6f, 0.6f);
                     }
                 }
-
-                return battleStats.finalAttackDelay() * 2;
+                return battleStats.finalAttackDelay();
+                break;
             default:
-                return 1;
+                return 2;
+                break;
         }
     }
 
