@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44207373, g: 0.49106324, b: 0.5709852, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3160,7 +3160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4209080682547367598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3900006, y: 3.1754265, z: -11}
+  m_LocalPosition: {x: 2.3900003, y: 3.1754265, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4209080684082291102}
@@ -3484,11 +3484,11 @@ MonoBehaviour:
     objectInScene: {fileID: 7702207329801964689}
   - itemId: 2
     itemName: Dague
-    itemDescription: "Une fine lame aiguis\xE9e. Un peu courte cependant."
+    itemDescription: Ache puissante mais lourde
     itemSprite: {fileID: 21300000, guid: 2c7e4d8bc61bcc54b9f8c7fe32b4abee, type: 3}
     slotLocation: 0
-    attackAreaSimple: {fileID: 0}
-    attackAreaLourde: {fileID: 0}
+    attackAreaSimple: {fileID: 4209080683062471410}
+    attackAreaLourde: {fileID: 4209080683872192492}
     objectInScene: {fileID: 0}
   - itemId: 3
     itemName: Capuche
@@ -4723,7 +4723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4209080684469553177}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3900006, y: 3.1754265, z: -11}
+  m_LocalPosition: {x: 2.3900003, y: 3.1754265, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4209080684523714143}
@@ -4757,6 +4757,13 @@ MonoBehaviour:
     FarClipPlane: 1000
     Dutch: 0
     LensShift: {x: 0, y: 0}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
