@@ -100,6 +100,11 @@ public class Card : ScriptableObject
         lastMethod?.Invoke();
     }
 
+    public void equip()
+    {
+        GameObject.FindWithTag("Player").GetComponent<ItemSlots>().changeItem(itemID);
+    }
+
     public void use()
     {
         // Si le script associé a cette carte n'est pas défini, on l'initialise

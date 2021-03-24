@@ -26,17 +26,7 @@ public class DeckUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (DeckManager.instance.currentHand.cardCount == 0)
-            {
-                DeckManager.instance.FullHand();
-                UpdateUI();
-                return;
-            }
-            DeckManager.instance.UseCard();
-            UpdateUI();
-        }
+
     }
 
     public void UpdateUI()

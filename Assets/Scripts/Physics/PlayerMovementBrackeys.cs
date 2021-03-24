@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovementBrackeys : MonoBehaviour
@@ -35,8 +36,28 @@ public class PlayerMovementBrackeys : MonoBehaviour
     private float dashTime;
     public float StartDashTime;
 
+    // Equip
+    private Card[] cards;
+
+    public static T[] GetAllInstances<T>() where T : ScriptableObject
+    {
+        string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name);  //FindAssets uses tags check documentation for more info
+        T[] a = new T[guids.Length];
+        for (int i = 0; i < guids.Length; i++)         //probably could get optimized 
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+            a[i] = AssetDatabase.LoadAssetAtPath<T>(path);
+        }
+
+        return a;
+
+    }
+
     private void Start()
     {
+        // Equip
+        cards = GetAllInstances<Card>();
+
         //dash
         dashTime = StartDashTime;
 
@@ -58,6 +79,38 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
         if (hasControl)
         {
+            // Cast the active of the current armor
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                ItemSlots itemSlots = GetComponent<ItemSlots>();
+                if (itemSlots.equipmentSlot1 != 0)
+                {
+                    foreach (Card card in cards)
+                    {
+                        if (itemSlots.equipmentSlot1 == card.itemID)
+                        {
+                            card.use();
+                        }
+                    }
+                }
+            }
+
+            // Cast the active of the current armor
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ItemSlots itemSlots = GetComponent<ItemSlots>();
+                if (itemSlots.equipmentSlot2 != 0)
+                {
+                    foreach (Card card in cards)
+                    {
+                        if (itemSlots.equipmentSlot2 == card.itemID)
+                        {
+                            card.use();
+                        }
+                    }
+                }
+            }
+
             if (canMove)
             {
                 horizontalMove = Input.GetAxisRaw("Horizontal");
