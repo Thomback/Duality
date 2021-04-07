@@ -195,6 +195,10 @@ public class BattleStats : MonoBehaviour
             = this.maxHPIncrease
             = 0f;
 
+        this.runSpeed = 60;
+        this.jumpForce = 20;
+        this.maxHP = 100;
+
         if (this.currentHP > this.maxHP)
         {
             this.currentHP = this.maxHP;

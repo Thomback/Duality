@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 17
   name: Armure
-  description: Armure lourde de combat
-  image: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  description: 
+  image: {fileID: 0}
   _type: 1
   cardScriptData:
     value: 15
-    armorType: 1
+    armorType: 0
     magicType: 0
     usableOnTime: 0
   useOverrideScript: 0

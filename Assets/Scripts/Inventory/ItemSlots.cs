@@ -11,6 +11,7 @@ public class ItemSlots : MonoBehaviour
 
     private BattleStats battleStats;
     private PlayerMovementBrackeys playerMovementBrackeys;
+    private CharacterControllerBrackeys characterControllerBrackeys;
 
     private static ItemSlots Instance = null;
 
@@ -22,6 +23,7 @@ public class ItemSlots : MonoBehaviour
         }
         battleStats = GetComponent<BattleStats>();
         playerMovementBrackeys = GetComponent<PlayerMovementBrackeys>();
+        characterControllerBrackeys = GetComponent<CharacterControllerBrackeys>();
         Instance = this;
     }
 
@@ -65,11 +67,11 @@ public class ItemSlots : MonoBehaviour
         switch (weaponSlot)
         {
             case 1:
-                battleStats.attackDamage = 2;
+                battleStats.attackDamage = 4;
                 battleStats.attackDelay = 0.2f;
                 break;
             case 2:
-                battleStats.attackDamage = 5;
+                battleStats.attackDamage = 10;
                 battleStats.attackDelay = 0.5f;
                 break;
 
@@ -85,24 +87,36 @@ public class ItemSlots : MonoBehaviour
         {
             case 10:
                 // capuche
+                battleStats.resetModifiers();
+
                 Debug.Log("vitesse+");
-                battleStats.runSpeed += 30; 
+                battleStats.runSpeedIncrease = 25;
                 break;
+
             case 11:
                 // casques
+                battleStats.resetModifiers();
+
                 Debug.Log("attaque+");
-                battleStats.attackDamage = +2;
+                battleStats.attackDamageIncrease = 10;
                 break;
+
             case 16:
                 // seringue
+                battleStats.resetModifiers();
+
                 Debug.Log("saut+");
-                battleStats.jumpForce = +10;
+                battleStats.jumpForceIncrease = 25;
                 break;
+
             case 17:
                 // armure
+                battleStats.resetModifiers();
+
                 Debug.Log("defense+");
                 battleStats.dmgReduction = +10;
                 break;
+
             default:
                 break;
         }
@@ -113,21 +127,29 @@ public class ItemSlots : MonoBehaviour
                 // bottes
                 Debug.Log("double saut");
                 playerMovementBrackeys.capacityOn = false;
+                characterControllerBrackeys.canWallJump = false;
+
                 break;
             case 13:
                 // pantalon
                 Debug.Log("dash");
                 playerMovementBrackeys.capacityOn = true;
+                characterControllerBrackeys.canWallJump = false;
+
                 break;
             case 14:
                 // bouclier 
                 Debug.Log("resistence projectile");
                 playerMovementBrackeys.capacityOn = false;
+                characterControllerBrackeys.canWallJump = false;
+
                 break;
             case 15:
                 // walljump
                 Debug.Log("walljump");
                 playerMovementBrackeys.capacityOn = false;
+                characterControllerBrackeys.canWallJump = true;
+
                 break;
             default:
                 break;

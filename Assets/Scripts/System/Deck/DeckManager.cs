@@ -34,8 +34,6 @@ public class DeckManager : MonoBehaviour
 
     void Awake()
     {
-        deadDeck.Shuffle();
-
         if (instance != null)
         {
             Destroy(gameObject);

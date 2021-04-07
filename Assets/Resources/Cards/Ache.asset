@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 2
   name: Ache
-  description: Ache puissante mais lourde
+  description: Ache lourde mais puissante
   image: {fileID: 21300000, guid: 2c7e4d8bc61bcc54b9f8c7fe32b4abee, type: 3}
   _type: 0
   cardScriptData:

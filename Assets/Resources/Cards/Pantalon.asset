@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Pantalon
   m_EditorClassIdentifier: 
   itemID: 12
-  name: "Pantalont us\xE9"
-  description: Ce pantalon renferme un pouvoir surprenant
+  name: Pantalon
+  description: 
   image: {fileID: 21300000, guid: 7e3580b8e7a780a46a6a749bb9f152f0, type: 3}
-  _type: 0
+  _type: 1
   cardScriptData:
     value: 84
     armorType: 0

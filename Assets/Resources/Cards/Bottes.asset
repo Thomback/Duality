@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Bottes
   m_EditorClassIdentifier: 
   itemID: 13
-  name: Casque en Cuir
-  description: "Ce casque n'est pas tr\xE8s resistant, mais c'est mieux que rien."
-  image: {fileID: 21300000, guid: 33bf6379bb300c64a9925db8eabffb2a, type: 3}
+  name: Bottes
+  description: 
+  image: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
   _type: 1
   cardScriptData:
     value: 84
-    armorType: 1
+    armorType: 0
     magicType: 0
     usableOnTime: 0
   useOverrideScript: 0
