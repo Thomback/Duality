@@ -8,7 +8,7 @@ public class SceneSwitcherObject : MonoBehaviour
     {
         if (hit.tag == "Player")
         {
-            Debug.Log("Try to load New Scene");
+            GetComponent<Collider2D>().enabled = false;
             GameObject.FindWithTag("GameController").GetComponent<SwitchToNextLevel>().LoadNextScene();
         }
     }
