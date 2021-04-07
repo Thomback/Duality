@@ -5,21 +5,16 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public GameObject Projectil;
+    //public GameObject Particule;
     public int strenght = 10;
     
-    void Update()
+    void Start()
     {
-        /*if (Input.GetKeyDown(KeyCode.E))
-        {
-            GameObject Rock = Instantiate(Projectil, transform.position, Quaternion.identity) as GameObject;
-            Rock.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector2.right * strenght);
-            Destroy(Rock, 3f);
-        }*/
+        //Particule.transform.parent = Projectil.transform;
     }
     public void projectileLaunch()
     {
         GameObject Rock = Instantiate(Projectil, transform.position, Quaternion.identity) as GameObject;
         Rock.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector2.right* strenght);
-        Destroy(Rock, 3f);
     }
 }

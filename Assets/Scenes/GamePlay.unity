@@ -847,6 +847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectil: {fileID: 1458397149747466825, guid: 5c4c702fdbba1f144adf7e99bbeb82ef,
     type: 3}
+  Particule: {fileID: 7404726880646011602, guid: 9fa449fd3c366cb4f93a6361db577f70,
+    type: 3}
   strenght: 10
 --- !u!1 &691462912
 GameObject:
