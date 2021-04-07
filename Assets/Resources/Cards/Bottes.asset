@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Bottes
   m_EditorClassIdentifier: 
-  itemID: 11
-  name: 'Bottes '
-  description: "Devenez aussi l\xE9g\xE9 qu'une plume"
-  image: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+  itemID: 13
+  name: Casque en Cuir
+  description: "Ce casque n'est pas tr\xE8s resistant, mais c'est mieux que rien."
+  image: {fileID: 21300000, guid: 33bf6379bb300c64a9925db8eabffb2a, type: 3}
   _type: 1
   cardScriptData:
     value: 84
-    armorType: 0
+    armorType: 1
     magicType: 0
     usableOnTime: 0
   useOverrideScript: 0

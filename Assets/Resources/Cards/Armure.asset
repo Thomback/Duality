@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Armure
   m_EditorClassIdentifier: 
-  itemID: 2
-  name: Dague
-  description: "Une fine lame aiguis\xE9e. Un peu courte cependant."
-  image: {fileID: 21300000, guid: 2c7e4d8bc61bcc54b9f8c7fe32b4abee, type: 3}
-  _type: 0
+  itemID: 17
+  name: Armure
+  description: Armure lourde de combat
+  image: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  _type: 1
   cardScriptData:
     value: 15
     armorType: 1

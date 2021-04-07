@@ -10,7 +10,7 @@ public class DeckManager : MonoBehaviour
     // The deck where you gonna pick your cards
     [SerializeField]
     public Deck deck;
-    // The deck of the used cards
+    // The deck of the used cardss
     [SerializeField]
     public Deck deadDeck;
     // The card you have in hand
@@ -34,6 +34,8 @@ public class DeckManager : MonoBehaviour
 
     void Awake()
     {
+        deadDeck.Shuffle();
+
         if (instance != null)
         {
             Destroy(gameObject);

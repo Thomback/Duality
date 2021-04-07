@@ -32,6 +32,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     private int waitedSeconds = 0;          // Seconds waited for our idle animations trigger
 
     // dash
+    public bool capacityOn = false;
     bool dash = false;
     private float dashTime;
     public float StartDashTime;
@@ -128,7 +129,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
                     crouch = false;
                 }
 
-                if (Input.GetButtonDown("Dash") && dashTime <= 0)
+                if (Input.GetButtonDown("Dash") && dashTime <= 0 & capacityOn == true)
                 {
                     Debug.Log("dashhhhhhhhhhh");
                     dash = true;

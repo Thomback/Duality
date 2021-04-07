@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  itemID: 4
+  itemID: 0
   name: Pantalon
   description: "C'est \xE9trange, ce pantalon poss\xE8de un design bien particulier,
     il semblerait presque sorti d'une autre \xE9poque."

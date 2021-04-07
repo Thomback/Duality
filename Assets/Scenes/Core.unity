@@ -843,10 +843,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck:
+  - {fileID: 11400000, guid: 8bc2e024c71dc2e4eae9cef8967aeb57, type: 2}
   - {fileID: 11400000, guid: a82c44eea52f2d240a4e1dc4e428793a, type: 2}
   - {fileID: 11400000, guid: 2702d281ad495fc45b199357e0a5cac0, type: 2}
-  - {fileID: 11400000, guid: 8bc2e024c71dc2e4eae9cef8967aeb57, type: 2}
   - {fileID: 11400000, guid: 4eae22bb41129b34fb4d64af9a10d077, type: 2}
+  - {fileID: 11400000, guid: 3e0dc8e0b475da94e8457f1600fc5985, type: 2}
+  - {fileID: 11400000, guid: 5fb9a00241bc5024da2d010108847f5c, type: 2}
   cardLimit: 40
 --- !u!1 &912130862
 GameObject:
@@ -2276,7 +2278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4209080682547367598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3900003, y: 3.1754265, z: -11}
+  m_LocalPosition: {x: 2.3900006, y: 3.1754265, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4209080684082291102}
@@ -2705,22 +2707,22 @@ MonoBehaviour:
     attackAreaLourde: {fileID: 4209080683872192492}
     objectInScene: {fileID: 0}
   - itemId: 2
-    itemName: Dague
-    itemDescription: Ache puissante mais lourde
+    itemName: 
+    itemDescription: 
     itemSprite: {fileID: 21300000, guid: 2c7e4d8bc61bcc54b9f8c7fe32b4abee, type: 3}
     slotLocation: 0
     attackAreaSimple: {fileID: 4209080683062471410}
     attackAreaLourde: {fileID: 4209080683872192492}
     objectInScene: {fileID: 0}
-  - itemId: 3
+  - itemId: 10
     itemName: Capuche
-    itemDescription: Petit capuchon vert. Joli.
+    itemDescription: 
     itemSprite: {fileID: 21300000, guid: 37b04ea956e05664d9ef35a338cd099e, type: 3}
     slotLocation: 1
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
-  - itemId: 4
+  - itemId: 11
     itemName: Casque en Cuir
     itemDescription: "Ce casque n'est pas tr\xE8s resistant, mais c'est mieux que
       rien."
@@ -2729,18 +2731,49 @@ MonoBehaviour:
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
-  - itemId: 5
-    itemName: Pantalon
-    itemDescription: "C'est \xE9trange, ce pantalon poss\xE8de un design bien particulier,
-      il semblerait presque sorti d'une autre \xE9poque."
+  - itemId: 12
+    itemName: 
+    itemDescription: 
     itemSprite: {fileID: 21300000, guid: 7e3580b8e7a780a46a6a749bb9f152f0, type: 3}
     slotLocation: 2
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
-  - itemId: 6
-    itemName: Bottes
-    itemDescription: "Ces botines vous vont \xE0 ravir!"
+  - itemId: 13
+    itemName: 
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 14
+    itemName: Bouclier
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 15
+    itemName: Gant
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 16
+    itemName: 
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 17
+    itemName: 
+    itemDescription: 
     itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
     slotLocation: 2
     attackAreaSimple: {fileID: 0}
@@ -2776,7 +2809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8942c0aa22b0cf4cb72c5933e30ea10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeSwitch: 30
+  timeBeforeSwitch: 5
 --- !u!114 &4209080683062471408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3379,6 +3412,7 @@ MonoBehaviour:
   battleStats: {fileID: 4209080683997083031}
   anim: {fileID: 0}
   playerAttack: {fileID: 4209080683997083032}
+  capacityOn: 0
   StartDashTime: 2
 --- !u!50 &4209080683997083034
 Rigidbody2D:
@@ -3708,7 +3742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.081250004, y: 0.7432047}
   m_AnchorMax: {x: 0.23, y: 0.8442047}
-  m_AnchoredPosition: {x: 0.2000122, y: 0.070007324}
+  m_AnchoredPosition: {x: 0.20007324, y: 0.070007324}
   m_SizeDelta: {x: 47.275146, y: 14.181129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4209080684112782005
@@ -3940,7 +3974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4209080684469553177}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3900003, y: 3.1754265, z: -11}
+  m_LocalPosition: {x: 2.3900006, y: 3.1754265, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4209080684523714143}

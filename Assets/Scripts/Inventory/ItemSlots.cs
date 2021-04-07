@@ -10,6 +10,7 @@ public class ItemSlots : MonoBehaviour
     public ItemList listeItems;
 
     private BattleStats battleStats;
+    private PlayerMovementBrackeys playerMovementBrackeys;
 
     private static ItemSlots Instance = null;
 
@@ -20,6 +21,7 @@ public class ItemSlots : MonoBehaviour
             Destroy(this);
         }
         battleStats = GetComponent<BattleStats>();
+        playerMovementBrackeys = GetComponent<PlayerMovementBrackeys>();
         Instance = this;
     }
 
@@ -62,30 +64,71 @@ public class ItemSlots : MonoBehaviour
     {
         switch (weaponSlot)
         {
-            case 0:
-                battleStats.flatJumpForceIncrease += 10;
-                battleStats.attackDelay = 0.5f;
-                break;
             case 1:
                 battleStats.attackDamage = 2;
                 battleStats.attackDelay = 0.2f;
                 break;
             case 2:
+                battleStats.attackDamage = 5;
+                battleStats.attackDelay = 0.5f;
+                break;
+
+/*            case 2:
                 battleStats.attackDamage = 6;
                 battleStats.attackDelay = 0.8f;
-                break;
+                break;*/
             default:
                 break;
         }
 
         switch (equipmentSlot1)
         {
+            case 10:
+                // capuche
+                Debug.Log("vitesse+");
+                battleStats.runSpeed += 30; 
+                break;
+            case 11:
+                // casques
+                Debug.Log("attaque+");
+                battleStats.attackDamage = +2;
+                break;
+            case 16:
+                // seringue
+                Debug.Log("saut+");
+                battleStats.jumpForce = +10;
+                break;
+            case 17:
+                // armure
+                Debug.Log("defense+");
+                battleStats.dmgReduction = +10;
+                break;
             default:
                 break;
         }
 
         switch (equipmentSlot2)
         {
+            case 12:
+                // bottes
+                Debug.Log("double saut");
+                playerMovementBrackeys.capacityOn = false;
+                break;
+            case 13:
+                // pantalon
+                Debug.Log("dash");
+                playerMovementBrackeys.capacityOn = true;
+                break;
+            case 14:
+                // bouclier 
+                Debug.Log("resistence projectile");
+                playerMovementBrackeys.capacityOn = false;
+                break;
+            case 15:
+                // walljump
+                Debug.Log("walljump");
+                playerMovementBrackeys.capacityOn = false;
+                break;
             default:
                 break;
         }

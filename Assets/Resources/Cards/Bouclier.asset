@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Bouclier
   m_EditorClassIdentifier: 
-  itemID: 10
+  itemID: 14
   name: Bouclier
   description: Utile face aux projectiles
   image: {fileID: 21300000, guid: 9e2c93b0d3badea4da52b27ed2d88902, type: 3}
