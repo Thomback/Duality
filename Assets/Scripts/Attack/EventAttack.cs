@@ -4,20 +4,4 @@ using UnityEngine;
 
 public class EventAttack : MonoBehaviour
 {
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            float EventAttack = Random.Range(0, 2);
-            Debug.Log(EventAttack);
-            if (EventAttack == 1)
-            {
-                GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
-            }
-            if (EventAttack == 0)
-            {
-                GameObject.Find("Peasant").GetComponent<EnnemyMovement>().dashOut();
-            }
-        }
-    }
 }

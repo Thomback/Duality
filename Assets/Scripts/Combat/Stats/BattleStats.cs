@@ -71,6 +71,10 @@ public class BattleStats : MonoBehaviour
     [Tooltip("Entity's weight")]
     public unitWeight weight = unitWeight.Medium; // Entity's jump force increase in percentage
 
+    [Header("Particles on death")]
+    public ParticleSystem deathParticles;
+
+
     [HideInInspector]
     public bool invicibilityFrames;
 
@@ -137,11 +141,13 @@ public class BattleStats : MonoBehaviour
         if (gameObject.tag == "Player")
         {
             //anim.SetBool("isDead", true);
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("GameOver");
             //Destroy(gameObject);
         }
         else
         {
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            screenShake.Instance.ShakeCamera(5, 1f);
             Destroy(gameObject);
         }
     }
