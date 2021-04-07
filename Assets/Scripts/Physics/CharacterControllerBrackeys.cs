@@ -35,6 +35,10 @@ public class CharacterControllerBrackeys : MonoBehaviour
     // jump
     private float jumpTimeCounter;
     public float jumpTime;
+
+    // double jump
+    private bool canDoubleJump = true;
+    private bool isJumpUsed = false;
     
 
     Animator anim;
@@ -90,6 +94,11 @@ public class CharacterControllerBrackeys : MonoBehaviour
         {
             anim.SetBool("isDead", true);
         }
+
+        if(jumpTimeCounter > 0.0f)
+        {
+            jumpTimeCounter -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -108,6 +117,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 m_Grounded = true;
+                isJumpUsed = false;
                 anim.SetBool("isGrounded", true);
                 if (!wasGrounded)
                     OnLandEvent.Invoke();
@@ -243,8 +253,18 @@ public class CharacterControllerBrackeys : MonoBehaviour
             // Add a vertical force to the player.
             //m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
+            jumpTimeCounter = 0.30f;
             Jump();
         } 
+
+        // DOUBLE JUMP
+        if(!m_Grounded && canDoubleJump && jump && !isJumpUsed && jumpTimeCounter <= 0)
+        {
+            isJumpUsed = true;
+            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+            m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce/1.5f, ForceMode2D.Impulse);
+            Jump();
+        }
 
         // WALLJUMP
         if (m_Walled && jump && canWallJump == true)

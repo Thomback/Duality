@@ -158,7 +158,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
             // ----- Abilities -----
 
-            if (timeBtwAttack <= 0 && !holdingM2)
+            if (timeBtwAttack <= 0 && !holdingM2 && canMove)
             {
                 // Attaque principale
                 if (Input.GetButtonDown("Fire1"))
