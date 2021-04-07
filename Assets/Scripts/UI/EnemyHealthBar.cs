@@ -13,7 +13,7 @@ public class EnemyHealthBar : MonoBehaviour
     private void Start()
     {
         enemyStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleStats>();
-        Debug.Log(GameObject.FindGameObjectWithTag("Enemy").name + " found.");
+        //Debug.Log(GameObject.FindGameObjectWithTag("Enemy").name + " found.");
 
         slider.value = enemyStats.currentHP;
     }

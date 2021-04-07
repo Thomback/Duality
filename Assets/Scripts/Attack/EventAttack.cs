@@ -14,10 +14,6 @@ public class EventAttack : MonoBehaviour
             {
                 GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
             }
-            if (EventAttack == 0)
-            {
-                GameObject.Find("Peasant").GetComponent<EnnemyMovement>().dashOut();
-            }
         }
     }
 }

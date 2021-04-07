@@ -8,7 +8,7 @@ public class GameOverMenu : MonoBehaviour
     public void Replay()
     {
         Debug.Log("Replay");
-        SceneManager.LoadScene("GamePlay");
+        SceneManager.LoadScene(2);
         SceneManager.LoadScene("Core", LoadSceneMode.Additive);
     }
     public void MainMenu()
