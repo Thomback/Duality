@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SceneSwitcherObject : MonoBehaviour
 {
+    bool hasSwitch;
+
     private void OnTriggerEnter2D(Collider2D hit)
     {
         if (hit.tag == "Player")

@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Theo/GameOver.unity
     guid: 26bcf543759e6c64296a5c3bf564533c
+  - enabled: 1
+    path: Assets/Scenes/Sacha/CardTestScene.unity
+    guid: 2d21775d9f44b5044bdfcd7f39db4706
   m_configObjects: {}

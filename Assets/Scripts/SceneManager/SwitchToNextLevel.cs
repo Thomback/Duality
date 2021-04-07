@@ -29,13 +29,13 @@ public class SwitchToNextLevel : MonoBehaviour
         if (async != null && async.isDone)
         {
             async = null;
-            SceneManager.UnloadSceneAsync("Entry + Cour");
         }
     }
 
     public void LoadNextScene()
     {
         if (!canBeLoaded) return;
-        async = SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
+        async = SceneManager.LoadSceneAsync("CardTestScene", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
     }
 }
