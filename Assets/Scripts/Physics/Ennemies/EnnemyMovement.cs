@@ -140,6 +140,7 @@ public class EnnemyMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             rangeAttack = true;
+            GameObject.FindWithTag("Player").GetComponent<BattleStats>().inBattle = true;
             //Debug.Log("The ennemy can see the player");
         }
     }

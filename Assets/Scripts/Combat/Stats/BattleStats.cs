@@ -77,6 +77,8 @@ public class BattleStats : MonoBehaviour
 
     [HideInInspector]
     public bool invicibilityFrames;
+    [HideInInspector]
+    public bool inBattle;
 
 
     private float knockBackCoefficient;
@@ -149,6 +151,7 @@ public class BattleStats : MonoBehaviour
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             screenShake.Instance.ShakeCamera(5, 1f);
             Destroy(gameObject);
+            GameObject.FindWithTag("Player").GetComponent<BattleStats>().inBattle = false;
         }
     }
 
