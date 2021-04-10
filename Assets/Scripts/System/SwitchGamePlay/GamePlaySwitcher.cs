@@ -6,7 +6,7 @@ using UnityEngine;
 public class GamePlaySwitcher : MonoBehaviour
 {
 
-    bool cardGamePlay = false, chaosControl = false;
+    bool cardGamePlay = false, chaosControl = false, antiChaosControl = false;
 
     DeckUI deckUI;
     float timer = 0.0f;
@@ -15,6 +15,7 @@ public class GamePlaySwitcher : MonoBehaviour
     public AudioSource music;
 
     private BattleStats playerStats;
+    private PlayerMovementBrackeys playerMovement;
     private bool wasInBattle = false;
     Coroutine currentCoroutine = null;
 
@@ -23,6 +24,7 @@ public class GamePlaySwitcher : MonoBehaviour
     {
         deckUI = GameObject.FindWithTag("UI").GetComponent<DeckUI>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<BattleStats>();
+        playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovementBrackeys>();
 
         deckUI.SwapHandUI(false);
         deckUI.UpdateUI();
@@ -44,12 +46,28 @@ public class GamePlaySwitcher : MonoBehaviour
             Time.timeScale = 1 - timer;
             music.pitch = 1 - timer;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
-            if (timer >= 0.9f)
+            if (timer >= 0.8f)
             {
                 chaosControl = false;
-                timer = 0.0f;
+                timer = 0;
                 Time.timeScale = 0;
                 SwitchGamePlay();
+            }
+        }
+
+        if (antiChaosControl)
+        {
+            timer += ((1 -Time.timeScale)*0.05f);
+            Time.timeScale = 0 + timer;
+            music.pitch = 0 + timer;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            if (timer >= 0.9f)
+            {
+                antiChaosControl = false;
+                timer = 0;
+                Time.timeScale = 1;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
+                music.pitch = 1;
             }
         }
 
@@ -67,7 +85,8 @@ public class GamePlaySwitcher : MonoBehaviour
     {
         chaosControl = false;
         yield return new WaitForSecondsRealtime(timeBeforeSwitch - 1);
-        chaosControl = true;
+        if(playerStats.inBattle)
+            chaosControl = true;
     }
 
     void SwitchGamePlay()
@@ -76,6 +95,7 @@ public class GamePlaySwitcher : MonoBehaviour
         if (cardGamePlay)
         {
             Time.timeScale = 0;
+            playerMovement.ChangeControl(false);
             deckUI.SwapHandUI(true);
             DeckManager.instance.FullHand();
         }
@@ -83,9 +103,9 @@ public class GamePlaySwitcher : MonoBehaviour
         {
             deckUI.SwapHandUI(false);
             chaosControl = false;
-            Time.timeScale = 1.0f;
-            music.pitch = 1;
-            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            antiChaosControl = true;
+            Time.timeScale = 0.2f;
+            playerMovement.ChangeControl(true);
             if (currentCoroutine != null)
             {
                 StopCoroutine(currentCoroutine);

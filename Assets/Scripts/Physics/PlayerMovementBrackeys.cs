@@ -326,7 +326,7 @@ public class PlayerMovementBrackeys : MonoBehaviour
     }
 
     //Gérer le contrôle du joueur
-    public void ChangeControl(bool status)
+    public void Freeze(bool status)
     {
         this.canMove = status;
         
@@ -337,6 +337,11 @@ public class PlayerMovementBrackeys : MonoBehaviour
             StartCoroutine(freeze());
         }
         
+    }
+
+    public void ChangeControl(bool boule)
+    {
+        hasControl = boule;
     }
 
 
@@ -390,6 +395,6 @@ public class PlayerMovementBrackeys : MonoBehaviour
     private IEnumerator freeze()
     {
         yield return new WaitForSeconds(0.06f);
-        ChangeControl(true);
+        Freeze(true);
     }
 }

@@ -4050,6 +4050,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 48517005148064515, guid: 0f83100d263becc49ac760c7df7d2320,
+        type: 3}
+      propertyPath: m_Radius
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 48517005148064523, guid: 0f83100d263becc49ac760c7df7d2320,
         type: 3}
       propertyPath: m_Name
@@ -4114,6 +4119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxHP
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 48517005402119097, guid: 0f83100d263becc49ac760c7df7d2320,
+        type: 3}
+      propertyPath: m_Radius
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 48517006945394947, guid: 0f83100d263becc49ac760c7df7d2320,
         type: 3}
