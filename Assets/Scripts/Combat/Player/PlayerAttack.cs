@@ -57,6 +57,7 @@ public class PlayerAttack : MonoBehaviour
                 if (comboCounter == 0)
                 {
                     anim.Play("SingleHandSlash");
+                    SoundScript.PlaySound("sword");
                     //Debug.Log("FrontSlash");
                     comboCounter++;
                 }else if (comboCounter >= 1)

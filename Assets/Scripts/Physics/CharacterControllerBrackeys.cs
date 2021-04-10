@@ -120,7 +120,10 @@ public class CharacterControllerBrackeys : MonoBehaviour
                 isJumpUsed = false;
                 anim.SetBool("isGrounded", true);
                 if (!wasGrounded)
+                {
                     OnLandEvent.Invoke();
+                    //SoundScript.PlaySound("jump");
+                }
             }
         }
 

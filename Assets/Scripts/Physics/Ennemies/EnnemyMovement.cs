@@ -167,6 +167,24 @@ public class EnnemyMovement : MonoBehaviour
     IEnumerator shootWait()
     {
         horizontalMove = 0;
+        switch (Random.Range(0, 10))
+        {
+            case 0:
+                SoundScript.PlaySound("laugh1");
+                break;
+            case 1:
+                SoundScript.PlaySound("laugh2");
+                break;
+            case 2:
+                SoundScript.PlaySound("vocalisation1");
+                break;
+            case 3:
+                SoundScript.PlaySound("vocalisation2");
+                break;
+            default:
+                break;
+        }
+
         yield return new WaitForSeconds(0.7f);
         GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
         canMove = !canMove;
@@ -175,6 +193,7 @@ public class EnnemyMovement : MonoBehaviour
     IEnumerator dashOut()
     {
         horizontalMove = 0;
+        SoundScript.PlaySound("vocalisation3");
         screenShake.Instance.ShakeCamera(1, 1.5f);
         yield return new WaitForSeconds(0.3f);
         gameObject.GetComponent<BattleStats>().attackDamage = 40;
