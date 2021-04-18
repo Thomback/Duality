@@ -6,7 +6,7 @@ public class EnnemyMovement : MonoBehaviour
     // door
     GameObject door;
 
-    float time = 5;
+    private float time = 2;
     public enum ennemyBehavior
     {
         Zombie,
@@ -19,6 +19,8 @@ public class EnnemyMovement : MonoBehaviour
     public ennemyBehavior behavior = ennemyBehavior.Zombie;
 
     public EnnemyController controller;
+    public BattleStats battleStats;
+    public GameObject projectileStart;
 
     float horizontalMove = 0f;
     bool jump = false;
@@ -26,13 +28,17 @@ public class EnnemyMovement : MonoBehaviour
     private bool canMove = true;
     private bool isMoving;
 
+    [SerializeField]
+    private GameObject ennemyModel;
+    private Animator ennemyAnimator;
+    private float lastMovement;
+
     private Transform playerPosition;
     private Transform myPosition;
 
-    public float pointDeVie;
-    public float percentCurrentHP;
+    private float percentCurrentHP;
 
-    public int intervalleMax;
+    private int intervalleMax;
 
     private void Start()
     {
@@ -42,6 +48,7 @@ public class EnnemyMovement : MonoBehaviour
 
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         myPosition = gameObject.GetComponent<Transform>();
+        ennemyAnimator = ennemyModel.GetComponent<Animator>();
 
         if(controller == null)
             controller = gameObject.GetComponent<EnnemyController>();
@@ -53,18 +60,16 @@ public class EnnemyMovement : MonoBehaviour
     {   
         if (isInRange)
         {
-            pointDeVie = gameObject.GetComponent<BattleStats>().currentHP;
-            percentCurrentHP = (pointDeVie * 100) / 300;
+            percentCurrentHP = (battleStats.currentHP * 100) / battleStats.maxHP;
             time -= Time.deltaTime;   
             if (time <= 0) 
             {
-                if(percentCurrentHP > 70) time = 2;
-                if (percentCurrentHP < 70 & percentCurrentHP > 50) time = 1;
-                if (percentCurrentHP < 50) time = 0.5f;
+                if(percentCurrentHP > 70) time = 2.5f;
+                if (percentCurrentHP < 70 & percentCurrentHP > 50) time = 2;
+                if (percentCurrentHP < 50) time = 1f;
                 if (rangeAttack == true) intervalleMax = 6;
-                if (rangeAttack == false) intervalleMax = 2;
+                if (rangeAttack == false) intervalleMax = 3;
                 float EventAttack = Random.Range(0, intervalleMax);
-                Debug.Log(intervalleMax);
                 if (EventAttack > 0 & rangeAttack == true && canMove)
                 {
                     canMove = !canMove;
@@ -95,6 +100,16 @@ public class EnnemyMovement : MonoBehaviour
                         {
                             horizontalMove = 0;
                         }
+                        if(lastMovement == 0 && horizontalMove != 0)
+                        {
+                            ennemyAnimator.SetBool("Moving", true);
+                            ennemyAnimator.SetTrigger("changeState");
+                        }
+                        else if(lastMovement != 0 && horizontalMove == 0)
+                        {
+                            ennemyAnimator.SetBool("Moving", false);
+                            ennemyAnimator.SetTrigger("changeState");
+                        }
                         break;
                     case ennemyBehavior.Pogo:
                         jump = true;
@@ -121,6 +136,7 @@ public class EnnemyMovement : MonoBehaviour
                 }
             }
         }
+        lastMovement = horizontalMove;
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
@@ -185,8 +201,11 @@ public class EnnemyMovement : MonoBehaviour
                 break;
         }
 
-        yield return new WaitForSeconds(0.7f);
-        GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
+        ennemyAnimator.SetTrigger("Throw");
+        yield return new WaitForSeconds(1f);
+        //GameObject.Find("RockShoot").GetComponent<Projectile>().projectileLaunch();
+        projectileStart.GetComponent<Projectile>().projectileLaunch();
+        yield return new WaitForSeconds(0.5f);
         canMove = !canMove;
     }
 
@@ -198,27 +217,43 @@ public class EnnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         gameObject.GetComponent<BattleStats>().attackDamage = 40;
 
+        var rotationVector = ennemyModel.transform.rotation.eulerAngles;
+        rotationVector.y += 180;
+        ennemyModel.transform.rotation = Quaternion.Euler(rotationVector);
+
         if (myPosition.position.x - 0.1 > playerPosition.position.x)
         {
             horizontalMove = 1;
+            ennemyAnimator.SetBool("BackwardMoving", true);
             yield return new WaitForSeconds(1.2f);
             screenShake.Instance.ShakeCamera(2, 1.5f);
-            horizontalMove = -8;
+            horizontalMove = -5;
         }
         else if (myPosition.position.x + 0.1 < playerPosition.position.x)
         {
             horizontalMove = -1;
+            ennemyAnimator.SetBool("BackwardMoving", true);
             yield return new WaitForSeconds(1.2f);
             screenShake.Instance.ShakeCamera(2, 1.5f);
-            horizontalMove = 8;
+            horizontalMove = 5;
         }
         else
         {
             horizontalMove = 0;
         }
+        ennemyAnimator.SetBool("BackwardMoving", false);
+        rotationVector = ennemyModel.transform.rotation.eulerAngles;
+        rotationVector.y -= 180;
+        ennemyModel.transform.rotation = Quaternion.Euler(rotationVector);
+
+        ennemyAnimator.SetBool("Running", true);
         yield return new WaitForSeconds(1.5f);
         gameObject.GetComponent<BattleStats>().attackDamage = 15;
 
+        ennemyAnimator.SetBool("Moving", false);
+        ennemyAnimator.SetBool("Running", false);
+        horizontalMove = 0;
+        yield return new WaitForSeconds(0.2f);
         canMove = !canMove;
 
         //behavior = ennemyBehavior.Zombie;
