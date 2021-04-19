@@ -5,6 +5,7 @@ public class EnnemyMovement : MonoBehaviour
 {
     // door
     GameObject door;
+    GameObject[] doorToClose;
 
     private float time = 2;
     public enum ennemyBehavior
@@ -45,6 +46,7 @@ public class EnnemyMovement : MonoBehaviour
         // door
         door = GameObject.Find("Door");
         door.SetActive(false);
+        doorToClose = GameObject.FindGameObjectsWithTag("Door");
 
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         myPosition = gameObject.GetComponent<Transform>();
@@ -143,6 +145,10 @@ public class EnnemyMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             door.SetActive(true);
+            foreach(GameObject door in doorToClose)// Close all doors
+            {
+                door.GetComponent<Animator>().SetBool("closeDoor", true);
+            }
             isInRange = true;
             rangeAttack = false;
             CircleCollider2D collider = GetComponent<CircleCollider2D>();
