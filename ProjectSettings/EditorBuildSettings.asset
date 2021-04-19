@@ -14,21 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level/Art/Entry + Cour.unity
     guid: ecec55a4aeecb00408f6047d891f0eb2
-  - enabled: 0
-    path: Assets/Scenes/GamePlay.unity
-    guid: 44f8d7ab6af4778448e55c71870859b7
-  - enabled: 0
-    path: Assets/Scenes/Tests/Transition1.unity
-    guid: 504a11c252ce1e6499643bcff70ad2ff
-  - enabled: 0
-    path: Assets/Scenes/Tests/Couloir.unity
-    guid: d55fefe7be4735943b64a4ad3427ba05
-  - enabled: 0
-    path: Assets/Scenes/Sacha/CardTestScene.unity
-    guid: 2d21775d9f44b5044bdfcd7f39db4706
-  - enabled: 0
-    path: Assets/Scenes/Tests/Transition2.unity
-    guid: 7205a3dcc1d295a428376c740f18df10
+  - enabled: 1
+    path: Assets/Scenes/Intro/Interlude.unity
+    guid: a4c9d1dc57ce6e148a3a6bcb2677d672
   - enabled: 1
     path: Assets/Scenes/Intro/Introduction.unity
     guid: 0c2bc081214608944b59918386bcf499

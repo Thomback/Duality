@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class IntroController : MonoBehaviour
 {
@@ -94,8 +93,7 @@ public class IntroController : MonoBehaviour
                     animFiesta.Play("Fiesta");
                     break;
                 case 12:
-                    SceneManager.LoadScene(2);
-                    SceneManager.LoadScene(1, LoadSceneMode.Additive);
+                    SceneController.Instance.FadeToLevel("Entry + Cour");
                     break;
             }
         }
@@ -116,6 +114,8 @@ public class IntroController : MonoBehaviour
         TextContainer.text = "";
         foreach(char lettre in phrase.ToCharArray())
         {
+            if (lettre != 'a' && lettre != 'e' && lettre != 'i' && lettre != 'o' && lettre != 'u' && lettre != 'y')
+                DialogBox.GetComponent<AudioSource>().Play();
             TextContainer.text += lettre;
             yield return new WaitForSeconds(0.02f);
         }

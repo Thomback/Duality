@@ -11,7 +11,7 @@ public class SceneSwitcherObject : MonoBehaviour
         if (hit.tag == "Player")
         {
             GetComponent<Collider2D>().enabled = false;
-            GameObject.FindWithTag("GameController").GetComponent<SwitchToNextLevel>().LoadNextScene();
+            SceneController.Instance.FadeToScene("Interlude");
         }
     }
 }
