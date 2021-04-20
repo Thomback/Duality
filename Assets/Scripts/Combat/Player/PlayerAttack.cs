@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     public Animator anim;
     public GameObject weaponTracing;
     public GameObject projectileStart;
+    public GameObject spear;
 
     private Animator tracingAnim;
 
@@ -147,7 +148,6 @@ public class PlayerAttack : MonoBehaviour
                 anim.Play("DoubleHandSlash");
                 tracingAnim.SetTrigger("SwordHeavy");
                 SoundScript.PlaySound("sword");
-
                 
                 //Collider2D[] ennemiesToDamage = EnnemiesToDamage(true);
 
@@ -173,13 +173,17 @@ public class PlayerAttack : MonoBehaviour
                         ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, 0.6f, 0.6f);
                     }
                 }*/
+
                 DamageInflicter(5, 0.6f, 0.6f, EnnemiesToDamage(true));
                 return battleStats.finalAttackDelay() * 2;
             case 3: //Lance
                 SoundScript.PlaySound("sword");
 
-                if (!projectileStart.GetComponent<Spear>().Equals(null))
-                    projectileStart.GetComponent<Spear>().SpearLaunch();
+                //if (!projectileStart.GetComponent<Spear>().Equals(null))
+                //   projectileStart.GetComponent<Spear>().SpearLaunch();
+
+                spear.GetComponent<Spear>().SpearLaunch();
+
 
                 return battleStats.finalAttackDelay();
             default:
