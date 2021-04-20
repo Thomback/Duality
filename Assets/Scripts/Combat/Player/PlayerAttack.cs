@@ -12,11 +12,13 @@ public class PlayerAttack : MonoBehaviour
     public BattleStats battleStats;
     public ItemList itemList;
     public Animator anim;
+    public GameObject weaponTracing;
 
-    private int comboCounter;
+    private Animator tracingAnim;
+
+    private bool isSpinning = false;
     private float timer;
-
-    private GameObject temp;
+    private float tickTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -29,44 +31,63 @@ public class PlayerAttack : MonoBehaviour
             battleStats = GetComponent<BattleStats>();
         if(itemList.Equals(null))
             itemList = GameObject.FindWithTag("GameController").GetComponent<ItemList>();
+        if (weaponTracing.Equals(null))
+            weaponTracing = GameObject.Find("WeaponTracing");
+
+        tracingAnim = weaponTracing.GetComponent<Animator>();
     }
 
     private void Update()
     {
-        // combo
-        if (comboCounter > 0)
+        if (isSpinning)  // Heavy Axe attack timer
         {
-            timer += Time.deltaTime;
-            if(timer >= 3)
+            timer -= Time.deltaTime;
+            if(timer <= 0)// Si fin de l'attaque
             {
-                comboCounter = 0;
+
+                SoundScript.PlaySound("sword");
+                tracingAnim.SetBool("AxeHeavy", false);
+                isSpinning = false;
+            }
+            else
+            {
+                tickTimer -= Time.deltaTime;
+
+                if(tickTimer <= 0)
+                {
+                    SoundScript.PlaySound("sword");
+
+                    DamageInflicter(0.5f, 0.1f, 0.2f, EnnemiesToDamage(true));
+
+                    tickTimer = 0.5f;
+                }
             }
         }
-        if (comboCounter == 0 && timer != 0)
-        {
-            timer = 0;
-        }
     }
+
 
     public float attack1()
     {
         switch (itemSlots.weaponSlot)
         {
-            case 1: //Epées
-            case 2: //Hache TEST
-                if (comboCounter == 0)
-                {
-                    anim.Play("SingleHandSlash");
-                    SoundScript.PlaySound("sword");
-                    //Debug.Log("FrontSlash");
-                    comboCounter++;
-                }else if (comboCounter >= 1)
-                {
-                    anim.Play("SingleHandBackSlash");
-                    //Debug.Log("BackSlash");
-                    comboCounter = 0;
-                }
-                Collider2D[] ennemiesToDamage;
+            case 1: //Axe
+                anim.Play("DoubleHandSlash");
+                tracingAnim.SetTrigger("AxeLight");
+                SoundScript.PlaySound("sword");
+
+                DamageInflicter(1, 0.1f, 0.6f, EnnemiesToDamage(false));
+
+                return battleStats.finalAttackDelay();
+            case 2: //Sword
+                
+                anim.Play("SingleHandSlash");
+                tracingAnim.SetTrigger("SwordLight");
+                SoundScript.PlaySound("sword");
+                //Debug.Log("FrontSlash");
+
+                //Collider2D[] ennemiesToDamage = EnnemiesToDamage(false);
+
+                /*
                 // Si l'attaque de l'arme est en forme de sphere
                 if(itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().shape == "Sphere")
                 {// récupère la liste des Collider 2D des ennemis à endommager en fonction de la taille de l'attaque de l'arme
@@ -78,9 +99,8 @@ public class PlayerAttack : MonoBehaviour
                     ennemiesToDamage = Physics2D.OverlapBoxAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
                         new Vector2(itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeX, itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeY),
                         whatIsEnnemy);
-                    Debug.Log("Hit sent");
-                }
-                
+                }*/
+                /*
                 for(int i=0; i<ennemiesToDamage.Length; i++)
                 {
                     if(ennemiesToDamage[i].tag == "Enemy")
@@ -89,7 +109,18 @@ public class PlayerAttack : MonoBehaviour
                         ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, 0.1f, 0.2f);
                         Debug.Log("Ennemy endommagé :" + ennemiesToDamage[i].name);
                     }
-                }
+                }*/
+
+                DamageInflicter(1, 0.1f, 0.2f, EnnemiesToDamage(false));
+
+                return battleStats.finalAttackDelay();
+            case 3: //Lance
+                anim.Play("DoubleHandSlash");
+                tracingAnim.SetTrigger("LanceLight");
+                SoundScript.PlaySound("sword");
+
+                DamageInflicter(1, 0.1f, 0.3f, EnnemiesToDamage(false));
+
                 return battleStats.finalAttackDelay();
             default:
                 return 0;
@@ -100,27 +131,39 @@ public class PlayerAttack : MonoBehaviour
     {
         switch (itemSlots.weaponSlot)
         {
-            case 1:
-                return battleStats.finalAttackDelay();
-                break;
-            case 2: // Hache TEST
+            case 1://Axe
+                SoundScript.PlaySound("sword");
+                tracingAnim.SetBool("AxeHeavy", true);
+                isSpinning = true;
+
+                DamageInflicter(0.5f, 0.1f, 0.2f, EnnemiesToDamage(true));
+
+                tickTimer = 0.5f;
+                timer = 3;
+                return (3);//3 sec de tournoiement
+            case 2: // Sword
                 anim.SetBool("IsM2Released", true);
                 anim.Play("DoubleHandSlash");
+                tracingAnim.SetTrigger("SwordHeavy");
+                SoundScript.PlaySound("sword");
 
-                Collider2D[] ennemiesToDamage;
+                
+                //Collider2D[] ennemiesToDamage = EnnemiesToDamage(true);
+
+                /*
                 // Si l'attaque de l'arme est en forme de sphere
-                if (itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().shape == "Sphere")
+                if (itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().shape == "Sphere")
                 {// récupère la liste des Collider 2D des ennemis à endommager en fonction de la taille de l'attaque de l'arme
-                    ennemiesToDamage = Physics2D.OverlapCircleAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
-                        itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeSphere, whatIsEnnemy);
+                    ennemiesToDamage = Physics2D.OverlapCircleAll(itemList.items[itemSlots.weaponSlot].attackAreaLourde.transform.position,
+                        itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().attackRangeSphere, whatIsEnnemy);
                 }
                 else
                 {// Sinon si l'attaque est en forme de cube
-                    ennemiesToDamage = Physics2D.OverlapBoxAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
-                        new Vector2(itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeX, itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeY),
+                    ennemiesToDamage = Physics2D.OverlapBoxAll(itemList.items[itemSlots.weaponSlot].attackAreaLourde.transform.position,
+                        new Vector2(itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().attackRangeX, itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().attackRangeY),
                         whatIsEnnemy);
-                }
-
+                }*/
+                /*
                 for (int i = 0; i < ennemiesToDamage.Length; i++)
                 {
                     if (ennemiesToDamage[i].tag == "Enemy")
@@ -128,12 +171,11 @@ public class PlayerAttack : MonoBehaviour
                         ennemiesToDamage[i].GetComponent<BattleStats>().takeDamage(battleStats.finalAttackDamage() * 5);
                         ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, 0.6f, 0.6f);
                     }
-                }
-                return battleStats.finalAttackDelay();
-                break;
+                }*/
+                DamageInflicter(5, 0.6f, 0.6f, EnnemiesToDamage(true));
+                return battleStats.finalAttackDelay() * 2;
             default:
-                return 2;
-                break;
+                return 0.5f;
         }
     }
 
@@ -142,59 +184,6 @@ public class PlayerAttack : MonoBehaviour
         return 1;
     }
 
-/*
-    public float attack2()
-    {
-        switch (itemSlots.weaponSlot)
-        {
-            case 1:
-                anim.SetBool("IsM2Released", false);
-                anim.Play("DoubleHandSlash start");
-
-                return battleStats.finalAttackDelay();
-            default:
-                return 0;
-        }
-    }
-
-    public float attack2Release()
-    {
-
-        switch (itemSlots.weaponSlot)
-        {
-            case 1:
-            case 2: // Hache TEST
-                anim.SetBool("IsM2Released", true);
-                anim.Play("DoubleHandSlash hit");
-
-                Collider2D[] ennemiesToDamage;
-                // Si l'attaque de l'arme est en forme de sphere
-                if (itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().shape == "Sphere")
-                {// récupère la liste des Collider 2D des ennemis à endommager en fonction de la taille de l'attaque de l'arme
-                    ennemiesToDamage = Physics2D.OverlapCircleAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
-                        itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeSphere, whatIsEnnemy);
-                }
-                else
-                {// Sinon si l'attaque est en forme de cube
-                    ennemiesToDamage = Physics2D.OverlapBoxAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
-                        new Vector2(itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeX, itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeY),
-                        whatIsEnnemy);
-                }
-
-                for (int i = 0; i < ennemiesToDamage.Length; i++)
-                {
-                    if (ennemiesToDamage[i].tag == "Enemy")
-                    {// Parcourt la liste des ennemis à endommager
-                        ennemiesToDamage[i].GetComponent<BattleStats>().takeDamage(battleStats.finalAttackDamage() * 5);
-                        ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, 0.6f, 0.6f);
-                    }
-                }
-
-                return battleStats.finalAttackDelay() * 2;
-            default:
-                return 1;
-        }
-    }*/
 
     public float ability1()
     {
@@ -213,6 +202,59 @@ public class PlayerAttack : MonoBehaviour
             case 0:
             default:
                 return 1;
+        }
+    }
+
+
+
+
+    private Collider2D[] EnnemiesToDamage(bool isLourde)
+    {
+        Collider2D[] ennemiesToDamage;
+
+        if (!isLourde)
+        {
+            // Si l'attaque de l'arme est en forme de sphere
+            if (itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().shape == "Sphere")
+            {// récupère la liste des Collider 2D des ennemis à endommager en fonction de la taille de l'attaque de l'arme
+                ennemiesToDamage = Physics2D.OverlapCircleAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
+                    itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeSphere, whatIsEnnemy);
+            }
+            else
+            {// Sinon si l'attaque est en forme de cube
+                ennemiesToDamage = Physics2D.OverlapBoxAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
+                    new Vector2(itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeX, itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeY),
+                    whatIsEnnemy);
+            }
+        }
+        else
+        {
+            // Si l'attaque de l'arme est en forme de sphere
+            if (itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().shape == "Sphere")
+            {// récupère la liste des Collider 2D des ennemis à endommager en fonction de la taille de l'attaque de l'arme
+                ennemiesToDamage = Physics2D.OverlapCircleAll(itemList.items[itemSlots.weaponSlot].attackAreaLourde.transform.position,
+                    itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().attackRangeSphere, whatIsEnnemy);
+            }
+            else
+            {// Sinon si l'attaque est en forme de cube
+                ennemiesToDamage = Physics2D.OverlapBoxAll(itemList.items[itemSlots.weaponSlot].attackAreaLourde.transform.position,
+                    new Vector2(itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().attackRangeX, itemList.items[itemSlots.weaponSlot].attackAreaLourde.GetComponent<attackArea>().attackRangeY),
+                    whatIsEnnemy);
+            }
+        }
+
+        return ennemiesToDamage;
+    }
+
+    private void DamageInflicter(float damageMultiplicator, float knockBack, float hitStunSeconds, Collider2D[] ennemiesToDamage)
+    {
+        for (int i = 0; i < ennemiesToDamage.Length; i++)
+        {
+            if (ennemiesToDamage[i].tag == "Enemy")
+            {// Parcourt la liste des ennemis à endommager
+                ennemiesToDamage[i].GetComponent<BattleStats>().takeDamage(battleStats.finalAttackDamage() * damageMultiplicator);
+                ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, knockBack, hitStunSeconds);
+            }
         }
     }
 

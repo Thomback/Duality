@@ -44,6 +44,8 @@ public class ItemSlots : MonoBehaviour
         {
             case 0:
                 weaponSlot = newItem;
+                if(!listeItems.items[item.itemId].objectInScene.Equals(null))
+                    listeItems.items[item.itemId].objectInScene.GetComponent<MeshRenderer>().enabled = true;
                 break;
             case 1:
                 equipmentSlot1 = newItem;
@@ -66,19 +68,18 @@ public class ItemSlots : MonoBehaviour
     {
         switch (weaponSlot)
         {
-            case 1:
-                battleStats.attackDamage = 4;
-                battleStats.attackDelay = 0.2f;
+            case 1://Axe
+                battleStats.attackDamage = 20;
+                battleStats.attackDelay = 1.3f;
                 break;
-            case 2:
+            case 2://Sword
                 battleStats.attackDamage = 10;
                 battleStats.attackDelay = 0.5f;
                 break;
-
-/*            case 2:
-                battleStats.attackDamage = 6;
-                battleStats.attackDelay = 0.8f;
-                break;*/
+            case 3://Lance
+                battleStats.attackDamage = 10;
+                battleStats.attackDelay = 0.9f;
+                break;
             default:
                 break;
         }

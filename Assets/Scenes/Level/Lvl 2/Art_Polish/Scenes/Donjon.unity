@@ -2109,7 +2109,6 @@ GameObject:
   - component: {fileID: 2069947822}
   - component: {fileID: 2069947821}
   - component: {fileID: 2069947820}
-  - component: {fileID: 2069947819}
   m_Layer: 9
   m_Name: Dwarf Demon
   m_TagString: Enemy
@@ -2117,22 +2116,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &2069947819
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069947818}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 4
 --- !u!114 &2069947820
 MonoBehaviour:
   m_ObjectHideFlags: 0

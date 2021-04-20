@@ -8,10 +8,6 @@ public class Projectile : MonoBehaviour
     //public GameObject Particule;
     public int strength = 20;
     
-    void Start()
-    {
-        //Particule.transform.parent = Projectil.transform;
-    }
     public void projectileLaunch()
     {
         GameObject Rock = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
@@ -21,6 +17,5 @@ public class Projectile : MonoBehaviour
             Rock.GetComponent<Rigidbody2D>().velocity = new Vector2(strength, 3f);
         else
             Rock.GetComponent<Rigidbody2D>().velocity = new Vector2(strength * -1, 3f);
-        Debug.Log("Launching projectile.");
     }
 }

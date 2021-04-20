@@ -169,8 +169,7 @@ public class EnnemyMovement : MonoBehaviour
             }
             isInRange = true;
             rangeAttack = false;
-            CircleCollider2D collider = GetComponent<CircleCollider2D>();
-            collider.radius = 3;
+            GameObject.FindWithTag("Player").GetComponent<BattleStats>().inBattle = true;
             //Debug.Log("The ennemy can see the player");
         }
     }
@@ -180,8 +179,6 @@ public class EnnemyMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             rangeAttack = true;
-            GameObject.FindWithTag("Player").GetComponent<BattleStats>().inBattle = true;
-            //Debug.Log("The ennemy can see the player");
         }
     }
 

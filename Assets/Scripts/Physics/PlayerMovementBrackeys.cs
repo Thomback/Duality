@@ -300,9 +300,10 @@ public class PlayerMovementBrackeys : MonoBehaviour
 
     private void launchAttack2() {
         //Debug.Log("Attaque lourde");
-        playerAttack.attack2();
-
+        startTimeBtwAttack = playerAttack.attack2();
+        timeBtwAttack = startTimeBtwAttack;
         StopAllCoroutines();
+        waitedSeconds = 0;
 
         holdingM2 = true;
     }

@@ -10,7 +10,7 @@ public class attackArea : MonoBehaviour
     public float attackRangeSphere;
 
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         if(shape == "Sphere")

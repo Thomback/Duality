@@ -25,6 +25,7 @@ public class SoundScript : MonoBehaviour
     }
     public static void PlaySound(string clip)
     {
+        audioSrc.pitch = 1;
         switch (clip)
         {
             case "laugh1":
@@ -50,4 +51,5 @@ public class SoundScript : MonoBehaviour
                 break;
         }
     }
+
 }
