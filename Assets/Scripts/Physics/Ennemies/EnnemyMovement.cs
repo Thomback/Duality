@@ -13,7 +13,8 @@ public class EnnemyMovement : MonoBehaviour
         Zombie,
         Pogo,
         Pogozombie,
-        Dwarf
+        Dwarf,
+        OldDemon
     }
     public bool isInRange = false;
     public bool rangeAttack = true;
@@ -26,7 +27,8 @@ public class EnnemyMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
 
-    private bool canMove = true;
+    [HideInInspector]
+    public bool canMove = true;
     private bool isMoving;
 
     [SerializeField]
@@ -135,19 +137,49 @@ public class EnnemyMovement : MonoBehaviour
                         if (myPosition.position.x - 1 > playerPosition.position.x)
                         {
                             horizontalMove = -1;
-                            ennemyAnimator.SetBool("isRunning", true);
                         }
                         else if (myPosition.position.x + 1 < playerPosition.position.x)
                         {
                             horizontalMove = 1;
-                            ennemyAnimator.SetBool("isRunning", true);
                         }
                         else
                         {
                             jump = true;
                         }
+                        if (lastMovement == 0 && horizontalMove != 0)
+                        {
+                            ennemyAnimator.SetBool("isRunning", true);
+                        }
+                        else if (lastMovement != 0 && horizontalMove == 0)
+                        {
+                            ennemyAnimator.SetBool("isRunning", false);
+                        }
                         if (myPosition.position.y + 1 < playerPosition.position.y)
                             jump = true;
+                        break;
+                    case ennemyBehavior.OldDemon:
+                        if (myPosition.position.x - 3 > playerPosition.position.x)
+                        {
+                            horizontalMove = -1;
+                        }
+                        else if (myPosition.position.x + 3 < playerPosition.position.x)
+                        {
+                            horizontalMove = 1;
+                        }
+                        else
+                        {
+                            horizontalMove = 0;
+                        }
+                        if (lastMovement == 0 && horizontalMove != 0)
+                        {
+                            ennemyAnimator.SetBool("Walk", true);
+                        }
+                        else if (lastMovement != 0 && horizontalMove == 0)
+                        {
+                            ennemyAnimator.SetBool("Walk", false);
+                            ennemyAnimator.SetTrigger("Uppercut");
+                            canMove = false;
+                        }
                         break;
                 }
             }
@@ -280,5 +312,6 @@ public class EnnemyMovement : MonoBehaviour
         //behavior = ennemyBehavior.Zombie;
 
     }
+
 
 }

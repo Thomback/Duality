@@ -1575,6 +1575,52 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2094174631}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1190435522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1190435523}
+  - component: {fileID: 1190435524}
+  m_Layer: 10
+  m_Name: LanceHeavy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1190435523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190435522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.716, y: 0.185, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4209080684323129974}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1190435524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190435522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b179ff4ec58e246b4f3216c600081e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 3268587876393990093, guid: de8c1be60bdc78242966e97d3f51ad81,
+    type: 3}
+  strength: 20
 --- !u!1 &1205369862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,7 +3442,7 @@ MonoBehaviour:
   - itemId: 1
     itemName: Axe
     itemDescription: "Attention, elle est rouill\xE9e."
-    itemSprite: {fileID: 21300000, guid: 9e2c93b0d3badea4da52b27ed2d88902, type: 3}
+    itemSprite: {fileID: 21300000, guid: bda472a4088c30f478e325c93cac6253, type: 3}
     slotLocation: 0
     attackAreaSimple: {fileID: 1230753190}
     attackAreaLourde: {fileID: 1494563020}
@@ -3404,7 +3450,7 @@ MonoBehaviour:
   - itemId: 2
     itemName: Sword
     itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 2c7e4d8bc61bcc54b9f8c7fe32b4abee, type: 3}
+    itemSprite: {fileID: 21300000, guid: 7d0a51bfcf2433040a3cb8831de117ed, type: 3}
     slotLocation: 0
     attackAreaSimple: {fileID: 4209080683062471410}
     attackAreaLourde: {fileID: 4209080683872192492}
@@ -3412,7 +3458,7 @@ MonoBehaviour:
   - itemId: 3
     itemName: Lance
     itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 37b04ea956e05664d9ef35a338cd099e, type: 3}
+    itemSprite: {fileID: 21300000, guid: f4d71043dfe0c654998416e9136c6a18, type: 3}
     slotLocation: 0
     attackAreaSimple: {fileID: 1400583400}
     attackAreaLourde: {fileID: 0}
@@ -3427,17 +3473,17 @@ MonoBehaviour:
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
   - itemId: 12
-    itemName: 
+    itemName: Pantalon
     itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 7e3580b8e7a780a46a6a749bb9f152f0, type: 3}
+    itemSprite: {fileID: 21300000, guid: 4d06340728eae394f9a0a73cb6c947e9, type: 3}
     slotLocation: 2
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
   - itemId: 13
-    itemName: 
+    itemName: Bottes
     itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    itemSprite: {fileID: 21300000, guid: 4a5b02ecd6b60fc4fb24baba321c6d45, type: 3}
     slotLocation: 2
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
@@ -3462,6 +3508,14 @@ MonoBehaviour:
     itemName: Capuche
     itemDescription: 
     itemSprite: {fileID: 21300000, guid: 37b04ea956e05664d9ef35a338cd099e, type: 3}
+    slotLocation: 1
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 10
+    itemName: Cape
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: 1ec199041f7ea4944a3b3dcf196b0ec2, type: 3}
     slotLocation: 1
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
@@ -4666,6 +4720,7 @@ Transform:
   - {fileID: 4209080683062471409}
   - {fileID: 4209080683872192491}
   - {fileID: 1400583401}
+  - {fileID: 1190435523}
   m_Father: {fileID: 4209080683997083035}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

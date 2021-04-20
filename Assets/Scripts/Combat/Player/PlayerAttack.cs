@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     public ItemList itemList;
     public Animator anim;
     public GameObject weaponTracing;
+    public GameObject projectileStart;
 
     private Animator tracingAnim;
 
@@ -174,6 +175,13 @@ public class PlayerAttack : MonoBehaviour
                 }*/
                 DamageInflicter(5, 0.6f, 0.6f, EnnemiesToDamage(true));
                 return battleStats.finalAttackDelay() * 2;
+            case 3: //Lance
+                SoundScript.PlaySound("sword");
+
+                if (!projectileStart.GetComponent<Spear>().Equals(null))
+                    projectileStart.GetComponent<Spear>().SpearLaunch();
+
+                return battleStats.finalAttackDelay();
             default:
                 return 0.5f;
         }
