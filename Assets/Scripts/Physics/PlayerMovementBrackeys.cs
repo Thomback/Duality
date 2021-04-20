@@ -40,24 +40,22 @@ public class PlayerMovementBrackeys : MonoBehaviour
     // Equip
     private Card[] cards;
 
-    public static T[] GetAllInstances<T>() where T : ScriptableObject
+    public static Card[] GetAllInstances()
     {
-        string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name);  //FindAssets uses tags check documentation for more info
-        T[] a = new T[guids.Length];
-        for (int i = 0; i < guids.Length; i++)         //probably could get optimized 
+        Object[] listObject = Resources.LoadAll("Cards", typeof(Card));
+        List<Card> a = new List<Card>();
+        foreach (Object obj in listObject)
         {
-            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
-            a[i] = AssetDatabase.LoadAssetAtPath<T>(path);
+            a.Add((Card)obj);   
         }
-
-        return a;
+        return a.ToArray();
 
     }
 
     private void Start()
     {
         // Equip
-        cards = GetAllInstances<Card>();
+        cards = GetAllInstances();
 
         //dash
         dashTime = StartDashTime;
