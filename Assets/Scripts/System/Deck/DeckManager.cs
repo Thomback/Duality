@@ -52,6 +52,7 @@ public class DeckManager : MonoBehaviour
             deadDeck.Shuffle();
             deck.SetDeck(deadDeck.getDeck());
             deadDeck.ClearDeck();
+            deck.Shuffle();
         }
         Card currentCard = deck.PopCard();
         currentHand.AddCard(currentCard);
