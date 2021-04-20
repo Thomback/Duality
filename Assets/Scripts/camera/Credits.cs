@@ -10,7 +10,7 @@ public class Credits : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Time.timeScale = 3;
+            Time.timeScale = 4;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {

@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     public Animator anim;
     public GameObject weaponTracing;
     public GameObject projectileStart;
-    public GameObject spear;
+    //public GameObject spear;
 
     private Animator tracingAnim;
 
@@ -180,9 +180,9 @@ public class PlayerAttack : MonoBehaviour
                 SoundScript.PlaySound("sword");
 
                 //if (!projectileStart.GetComponent<Spear>().Equals(null))
-                //   projectileStart.GetComponent<Spear>().SpearLaunch();
+                   projectileStart.GetComponent<Spear>().SpearLaunch();
 
-                spear.GetComponent<Spear>().SpearLaunch();
+                //spear.GetComponent<Spear>().SpearLaunch();
 
 
                 return battleStats.finalAttackDelay();

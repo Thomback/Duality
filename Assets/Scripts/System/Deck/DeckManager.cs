@@ -39,7 +39,7 @@ public class DeckManager : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     // Take the first card of the deck and put it in side your hand

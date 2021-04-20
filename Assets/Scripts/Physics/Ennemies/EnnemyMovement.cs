@@ -192,6 +192,7 @@ public class EnnemyMovement : MonoBehaviour
         {
             if(door)
                 door.SetActive(true);
+            Debug.Log("Door to close : " + doorToClose.Length);
             if (doorToClose.Length > 0)
             {
                 foreach(GameObject door in doorToClose)// Close all doors
