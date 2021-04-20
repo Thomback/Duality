@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -203655887218126122
     second: mixamo.com
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: minidemon_defaultMat1
+    second: {fileID: 2100000, guid: c06672662deb15f428bfae69078c1f02, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

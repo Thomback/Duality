@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class SceneSwitcherObject : MonoBehaviour
 {
-    bool hasSwitch;
+    [SerializeField]
+    private string sceneToLoad;
+    [SerializeField]
+    private bool isLevel = false;
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
         if (hit.tag == "Player")
         {
-            GetComponent<Collider2D>().enabled = false;
-            SceneController.Instance.FadeToScene("Interlude");
+            if(GameObject.FindWithTag("Enemy") == null)
+            {
+                GetComponent<Collider2D>().enabled = false;
+                if(!isLevel)
+                    SceneController.Instance.FadeToScene(sceneToLoad);
+                else
+                    SceneController.Instance.FadeToLevel(sceneToLoad);
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ public class EnnemyMovement : MonoBehaviour
         Zombie,
         Pogo,
         Pogozombie,
-        DashOut
+        Dwarf
     }
     public bool isInRange = false;
     public bool rangeAttack = true;
@@ -45,7 +45,8 @@ public class EnnemyMovement : MonoBehaviour
     {
         // door
         door = GameObject.Find("Door");
-        door.SetActive(false);
+        if(door)
+            door.SetActive(false);
         doorToClose = GameObject.FindGameObjectsWithTag("Door");
 
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -62,10 +63,11 @@ public class EnnemyMovement : MonoBehaviour
     {   
         if (isInRange)
         {
-            percentCurrentHP = (battleStats.currentHP * 100) / battleStats.maxHP;
             time -= Time.deltaTime;   
-            if (time <= 0) 
+            if (time <= 0 && behavior == ennemyBehavior.Zombie) 
             {
+                percentCurrentHP = (battleStats.currentHP * 100) / battleStats.maxHP;
+
                 if(percentCurrentHP > 70) time = 2.5f;
                 if (percentCurrentHP < 70 & percentCurrentHP > 50) time = 2;
                 if (percentCurrentHP < 50) time = 1f;
@@ -105,12 +107,10 @@ public class EnnemyMovement : MonoBehaviour
                         if(lastMovement == 0 && horizontalMove != 0)
                         {
                             ennemyAnimator.SetBool("Moving", true);
-                            ennemyAnimator.SetTrigger("changeState");
                         }
                         else if(lastMovement != 0 && horizontalMove == 0)
                         {
                             ennemyAnimator.SetBool("Moving", false);
-                            ennemyAnimator.SetTrigger("changeState");
                         }
                         break;
                     case ennemyBehavior.Pogo:
@@ -131,9 +131,23 @@ public class EnnemyMovement : MonoBehaviour
                             horizontalMove = 0;
                         }
                         break;
-                    case ennemyBehavior.DashOut:
-                        Debug.Log("DASHOUT");
-                        StartCoroutine(dashOut());
+                    case ennemyBehavior.Dwarf:
+                        if (myPosition.position.x - 1 > playerPosition.position.x)
+                        {
+                            horizontalMove = -1;
+                            ennemyAnimator.SetBool("isRunning", true);
+                        }
+                        else if (myPosition.position.x + 1 < playerPosition.position.x)
+                        {
+                            horizontalMove = 1;
+                            ennemyAnimator.SetBool("isRunning", true);
+                        }
+                        else
+                        {
+                            jump = true;
+                        }
+                        if (myPosition.position.y + 1 < playerPosition.position.y)
+                            jump = true;
                         break;
                 }
             }
@@ -144,10 +158,14 @@ public class EnnemyMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.CompareTag("Player"))
         {
-            door.SetActive(true);
-            foreach(GameObject door in doorToClose)// Close all doors
+            if(door)
+                door.SetActive(true);
+            if (doorToClose.Length > 0)
             {
-                door.GetComponent<Animator>().SetBool("closeDoor", true);
+                foreach(GameObject door in doorToClose)// Close all doors
+                {
+                    door.GetComponent<Animator>().SetBool("closeDoor", true);
+                }
             }
             isInRange = true;
             rangeAttack = false;

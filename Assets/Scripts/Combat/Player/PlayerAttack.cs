@@ -78,6 +78,7 @@ public class PlayerAttack : MonoBehaviour
                     ennemiesToDamage = Physics2D.OverlapBoxAll(itemList.items[itemSlots.weaponSlot].attackAreaSimple.transform.position,
                         new Vector2(itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeX, itemList.items[itemSlots.weaponSlot].attackAreaSimple.GetComponent<attackArea>().attackRangeY),
                         whatIsEnnemy);
+                    Debug.Log("Hit sent");
                 }
                 
                 for(int i=0; i<ennemiesToDamage.Length; i++)
@@ -86,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
                     {// Parcourt la liste des ennemis à endommager
                         ennemiesToDamage[i].GetComponent<BattleStats>().takeDamage(battleStats.finalAttackDamage());
                         ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, 0.1f, 0.2f);
+                        Debug.Log("Ennemy endommagé :" + ennemiesToDamage[i].name);
                     }
                 }
                 return battleStats.finalAttackDelay();
@@ -214,9 +216,4 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
-    }
 }

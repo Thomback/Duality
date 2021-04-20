@@ -47,7 +47,7 @@ public class IntroController : MonoBehaviour
             "pour ses valets.");
         phrases.Enqueue("Aux premières notes, l'instrument s'éveilla. Une aura démoniaque surgit de l'outil maléfique, ses compagnons de beuverie " +
             "semblaient disparaître dans les ténèbres un à un et un tremblement de terre se faisait sentir.");
-        phrases.Enqueue("Un regard par la fenêtre permettait d'apercevoir la source du rafut, une tour géante qui sortait du sol de son domaine.");
+        phrases.Enqueue("Un regard par la fenêtre permettait d'apercevoir la source du raffut, une tour géante qui sortait du sol de son domaine.");
         phrases.Enqueue("Bientôt les habitants démoniaques de l'édifice allaient envahir son chateau, il le savait. Cependant, James sentait de " +
             "nouveau la présence de son père en lui. Il devait tirer tout ça au clair.");
         phrases.Enqueue("Après une dernière pinte de bière, paré de son kilt de combat et sa cornemuse de guerre, il allait renverser les envahisseurs.");

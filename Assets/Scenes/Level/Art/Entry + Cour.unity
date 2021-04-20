@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a46704edba6cc4eb48d73fdd22af61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHP: 150
   flatMaxHPIncrease: 0
   maxHPIncrease: 0
   currentHP: 0
@@ -5798,6 +5798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc521c2563d423648be541cc85354044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: Interlude
 --- !u!1 &1574939225
 GameObject:
   m_ObjectHideFlags: 0

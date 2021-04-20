@@ -380,6 +380,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogBox: {fileID: 1198853590}
   TextContainer: {fileID: 1198853589}
+  texte: "Notre h\xE9ros vient d'entrer dans la tour sans plus d'accroc... Qui sait
+    ce qui l'attend d\xE9sormais?"
+  nextScene: Donjon
 --- !u!1001 &606618428
 PrefabInstance:
   m_ObjectHideFlags: 0

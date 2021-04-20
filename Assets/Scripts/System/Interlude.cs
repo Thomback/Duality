@@ -9,6 +9,12 @@ public class Interlude : MonoBehaviour
     private GameObject DialogBox;
     [SerializeField]
     private TMP_Text TextContainer;
+    [SerializeField]
+    private string texte;
+    [SerializeField]
+    private string nextScene;
+    [SerializeField]
+    private bool isLevel = true;
 
     private bool active = false;
     void Start()
@@ -20,14 +26,17 @@ public class Interlude : MonoBehaviour
     {
         if ((Input.GetKeyUp(KeyCode.Space) || (Input.GetMouseButtonUp(0))) && active == true)
         {
-            SceneController.Instance.FadeToLevel("Etage1");
+            if (isLevel)
+                SceneController.Instance.FadeToLevel(nextScene);
+            else
+                SceneController.Instance.FadeToScene(nextScene);
         }
     }
 
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(EcrirePhrase("Notre héros vient d'entrer dans la tour sans plus d'accroc... Qui sait ce qui l'attend désormais?"));
+        StartCoroutine(EcrirePhrase(texte));
         active = true;
     }
 
