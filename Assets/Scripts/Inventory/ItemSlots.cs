@@ -44,7 +44,10 @@ public class ItemSlots : MonoBehaviour
         {
             case 0:
                 weaponSlot = newItem;
-                if(!listeItems.items[item.itemId].objectInScene.Equals(null))
+                listeItems.items[1].objectInScene.GetComponent<MeshRenderer>().enabled = false;
+                listeItems.items[2].objectInScene.GetComponent<MeshRenderer>().enabled = false;
+                listeItems.items[3].objectInScene.GetComponent<MeshRenderer>().enabled = false;
+                if (!listeItems.items[item.itemId].objectInScene.Equals(null))
                     listeItems.items[item.itemId].objectInScene.GetComponent<MeshRenderer>().enabled = true;
                 break;
             case 1:

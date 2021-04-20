@@ -263,6 +263,10 @@ public class PlayerAttack : MonoBehaviour
                 ennemiesToDamage[i].GetComponent<BattleStats>().takeDamage(battleStats.finalAttackDamage() * damageMultiplicator);
                 ennemiesToDamage[i].GetComponent<BattleStats>().hitStun(gameObject, knockBack, hitStunSeconds);
             }
+            if(ennemiesToDamage.Length > 0)
+            {
+                gameObject.GetComponent<BattleStats>().hitStun(ennemiesToDamage[0].gameObject, knockBack / 2, hitStunSeconds / 2);
+            }
         }
     }
 
