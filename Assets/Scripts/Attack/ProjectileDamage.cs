@@ -9,9 +9,19 @@ public class ProjectileDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Projectile Damage");
-            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<BattleStats>().takeDamage(15);
-            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<BattleStats>().hitStun(GameObject.FindGameObjectsWithTag("Enemy")[0], 0.1f, 0.5f);
+            BattleStats playerStats = collision.gameObject.GetComponent<BattleStats>();
+            CharacterControllerBrackeys playerController = collision.gameObject.GetComponent<CharacterControllerBrackeys>();
+            //Debug.Log("Projectile Damage");
+
+            if (playerController.immuneToProjectile)
+            {
+                //TODO play sound
+            }
+            else
+            {
+                playerStats.takeDamage(15);
+                playerStats.hitStun(GameObject.FindGameObjectsWithTag("Enemy")[0], 0.1f, 0.5f);
+            }
             Destroy(Projectil);
         }
         Destroy(Projectil);

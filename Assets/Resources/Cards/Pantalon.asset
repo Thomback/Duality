@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Pantalon
   m_EditorClassIdentifier: 
-  itemID: 12
+  itemID: 13
   name: Pantalon
   description: 
-  image: {fileID: 21300000, guid: 7e3580b8e7a780a46a6a749bb9f152f0, type: 3}
+  image: {fileID: 21300000, guid: 4d06340728eae394f9a0a73cb6c947e9, type: 3}
   _type: 1
   cardScriptData:
     value: 84

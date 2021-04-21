@@ -15,7 +15,7 @@ MonoBehaviour:
   itemID: 15
   name: Gant
   description: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 8cc3ecc8cdecf9a4d97533f5296c7d0b, type: 3}
   _type: 1
   cardScriptData:
     value: 84

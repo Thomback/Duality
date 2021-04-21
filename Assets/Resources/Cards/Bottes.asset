@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Bottes
   m_EditorClassIdentifier: 
-  itemID: 13
+  itemID: 12
   name: Bottes
   description: 
-  image: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+  image: {fileID: 21300000, guid: 4a5b02ecd6b60fc4fb24baba321c6d45, type: 3}
   _type: 1
   cardScriptData:
     value: 84

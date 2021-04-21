@@ -29,7 +29,6 @@ public class ItemSlots : MonoBehaviour
 
     public void changeItem(int newItem)
     {
-        battleStats.resetModifiers();
         Item item = null;
         for (int i = 0; i < listeItems.items.Length; ++i)
         {
@@ -90,7 +89,7 @@ public class ItemSlots : MonoBehaviour
         switch (equipmentSlot1)
         {
             case 10:
-                // capuche
+                // cape
                 battleStats.resetModifiers();
 
                 Debug.Log("vitesse+");
@@ -98,7 +97,7 @@ public class ItemSlots : MonoBehaviour
                 break;
 
             case 11:
-                // casques
+                // casque
                 battleStats.resetModifiers();
 
                 Debug.Log("attaque+");
@@ -130,28 +129,32 @@ public class ItemSlots : MonoBehaviour
             case 12:
                 // bottes
                 Debug.Log("double saut");
-                playerMovementBrackeys.capacityOn = false;
-                characterControllerBrackeys.canWallJump = false;
+                playerMovementBrackeys.ResetModifiers();
+                characterControllerBrackeys.ResetModifiers();
+                characterControllerBrackeys.canDoubleJump = true;
 
                 break;
             case 13:
-                // pantalon
+                // Pantalon
                 Debug.Log("dash");
+                playerMovementBrackeys.ResetModifiers();
+                characterControllerBrackeys.ResetModifiers();
                 playerMovementBrackeys.capacityOn = true;
-                characterControllerBrackeys.canWallJump = false;
 
                 break;
             case 14:
                 // bouclier 
-                Debug.Log("resistence projectile");
-                playerMovementBrackeys.capacityOn = false;
-                characterControllerBrackeys.canWallJump = false;
+                Debug.Log("resistance projectile");
+                playerMovementBrackeys.ResetModifiers();
+                characterControllerBrackeys.ResetModifiers();
+                characterControllerBrackeys.immuneToProjectile = true;
 
                 break;
             case 15:
-                // walljump
+                // walljump Gants
                 Debug.Log("walljump");
-                playerMovementBrackeys.capacityOn = false;
+                playerMovementBrackeys.ResetModifiers();
+                characterControllerBrackeys.ResetModifiers();
                 characterControllerBrackeys.canWallJump = true;
 
                 break;

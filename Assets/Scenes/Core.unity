@@ -3477,14 +3477,6 @@ MonoBehaviour:
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
   - itemId: 12
-    itemName: Pantalon
-    itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 4d06340728eae394f9a0a73cb6c947e9, type: 3}
-    slotLocation: 2
-    attackAreaSimple: {fileID: 0}
-    attackAreaLourde: {fileID: 0}
-    objectInScene: {fileID: 0}
-  - itemId: 13
     itemName: Bottes
     itemDescription: 
     itemSprite: {fileID: 21300000, guid: 4a5b02ecd6b60fc4fb24baba321c6d45, type: 3}
@@ -3492,10 +3484,18 @@ MonoBehaviour:
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
+  - itemId: 13
+    itemName: Pantalon
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: 4d06340728eae394f9a0a73cb6c947e9, type: 3}
+    slotLocation: 2
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
   - itemId: 14
     itemName: Bouclier
     itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    itemSprite: {fileID: 21300000, guid: 72a2560f230dc294bb0f19d1202262b6, type: 3}
     slotLocation: 2
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
@@ -3503,16 +3503,8 @@ MonoBehaviour:
   - itemId: 15
     itemName: Gant
     itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 2d6cd147c621d9f4d8f395fa5f5bf496, type: 3}
+    itemSprite: {fileID: 21300000, guid: 8cc3ecc8cdecf9a4d97533f5296c7d0b, type: 3}
     slotLocation: 2
-    attackAreaSimple: {fileID: 0}
-    attackAreaLourde: {fileID: 0}
-    objectInScene: {fileID: 0}
-  - itemId: 10
-    itemName: Capuche
-    itemDescription: 
-    itemSprite: {fileID: 21300000, guid: 37b04ea956e05664d9ef35a338cd099e, type: 3}
-    slotLocation: 1
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
     objectInScene: {fileID: 0}
@@ -3520,6 +3512,22 @@ MonoBehaviour:
     itemName: Cape
     itemDescription: 
     itemSprite: {fileID: 21300000, guid: 1ec199041f7ea4944a3b3dcf196b0ec2, type: 3}
+    slotLocation: 1
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 16
+    itemName: Seringue
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: b131201419ce89b418a30467b07e1604, type: 3}
+    slotLocation: 1
+    attackAreaSimple: {fileID: 0}
+    attackAreaLourde: {fileID: 0}
+    objectInScene: {fileID: 0}
+  - itemId: 17
+    itemName: Armure
+    itemDescription: 
+    itemSprite: {fileID: 21300000, guid: 9da937186d4a31e42aa15ba3e1e0f03e, type: 3}
     slotLocation: 1
     attackAreaSimple: {fileID: 0}
     attackAreaLourde: {fileID: 0}
@@ -4357,6 +4365,8 @@ MonoBehaviour:
   canWallJump: 0
   DashSpeed: 100
   jumpTime: 0
+  canDoubleJump: 1
+  immuneToProjectile: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []

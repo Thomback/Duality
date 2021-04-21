@@ -15,11 +15,11 @@ MonoBehaviour:
   itemID: 16
   name: Seringue
   description: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: b131201419ce89b418a30467b07e1604, type: 3}
   _type: 1
   cardScriptData:
     value: 84
-    armorType: 0
+    armorType: 1
     magicType: 0
     usableOnTime: 0
   useOverrideScript: 0

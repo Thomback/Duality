@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505aa604014d2488b309df053e48ab, type: 3}
   m_Name: Cape
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 10
   name: Cape
-  description: "Vous vous sentez cap\xE2ble de marcher dans l'air"
-  image: {fileID: 0}
+  description: 
+  image: {fileID: 21300000, guid: 1ec199041f7ea4944a3b3dcf196b0ec2, type: 3}
   _type: 1
   cardScriptData:
-    value: 15
+    value: 12
     armorType: 1
-    magicType: 2
+    magicType: 0
     usableOnTime: 0
-  useOverrideScript: 0
+  useOverrideScript: 1

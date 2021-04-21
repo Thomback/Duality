@@ -27,6 +27,7 @@ public class CharacterControllerBrackeys : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
 
     // walljump
+    [HideInInspector]
     public bool canWallJump = false;
 
     // dash
@@ -37,9 +38,13 @@ public class CharacterControllerBrackeys : MonoBehaviour
     public float jumpTime;
 
     // double jump
-    private bool canDoubleJump = true;
+    [HideInInspector]
+    public bool canDoubleJump = false;
     private bool isJumpUsed = false;
-    
+
+    // projectile immunity
+    [HideInInspector]
+    public bool immuneToProjectile = false;
 
     Animator anim;
     float lastYPosition;
@@ -326,6 +331,13 @@ public class CharacterControllerBrackeys : MonoBehaviour
         m_Grounded = false;
         anim.SetBool("isGrounded", false);
         anim.SetTrigger("Jumping");
+    }
+
+    public void ResetModifiers()
+    {
+        canDoubleJump = false;
+        canWallJump = false;
+        immuneToProjectile = false;
     }
 
 

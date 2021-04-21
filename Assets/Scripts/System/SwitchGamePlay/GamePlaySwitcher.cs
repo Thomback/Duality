@@ -16,6 +16,8 @@ public class GamePlaySwitcher : MonoBehaviour
 
     private BattleStats playerStats;
     private PlayerMovementBrackeys playerMovement;
+    private CharacterControllerBrackeys CCB;
+    private BattleStats BS;
     private bool wasInBattle = false;
     Coroutine currentCoroutine = null;
 
@@ -25,6 +27,9 @@ public class GamePlaySwitcher : MonoBehaviour
         deckUI = GameObject.FindWithTag("UI").GetComponent<DeckUI>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<BattleStats>();
         playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovementBrackeys>();
+
+        CCB = GameObject.FindWithTag("Player").GetComponent<CharacterControllerBrackeys>();
+        BS = GameObject.FindWithTag("Player").GetComponent<BattleStats>();
 
         deckUI.SwapHandUI(false);
         deckUI.UpdateUI();
@@ -98,6 +103,7 @@ public class GamePlaySwitcher : MonoBehaviour
             playerMovement.ChangeControl(false);
             deckUI.SwapHandUI(true);
             DeckManager.instance.FullHand();
+
         }
         else
         {

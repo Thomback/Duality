@@ -343,6 +343,11 @@ public class PlayerMovementBrackeys : MonoBehaviour
         hasControl = boule;
     }
 
+    public void ResetModifiers()
+    {
+        capacityOn = false;
+    }
+
 
 
     // Partie jolis Idle
