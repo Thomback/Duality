@@ -14,12 +14,14 @@ public class DeckUI : MonoBehaviour
     void Start()
     {
         DeckManager.instance.deck.Shuffle();
+        /*
         int cardCount = DeckManager.instance.deck.cardCount;
         for (int i = 0; i < 5 && i < cardCount; ++i)
         {
             DeckManager.instance.deck.PopCard().Init();
             DeckManager.instance.PickUpCard();
         }
+        */
         UpdateUI();
     }
 

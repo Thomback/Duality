@@ -21,15 +21,15 @@ public class GamePlaySwitcher : MonoBehaviour
     private bool wasInBattle = false;
     Coroutine currentCoroutine = null;
 
+    private pauseMenu popose;
+
     // Start is called before the first frame update
     void Start()
     {
         deckUI = GameObject.FindWithTag("UI").GetComponent<DeckUI>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<BattleStats>();
         playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovementBrackeys>();
-
-        CCB = GameObject.FindWithTag("Player").GetComponent<CharacterControllerBrackeys>();
-        BS = GameObject.FindWithTag("Player").GetComponent<BattleStats>();
+        popose = GetComponent<pauseMenu>();
 
         deckUI.SwapHandUI(false);
         deckUI.UpdateUI();
@@ -43,6 +43,7 @@ public class GamePlaySwitcher : MonoBehaviour
         {
             cardGamePlay = false;
             chaosControl = true;
+            popose.enabled = false;
         }
         // Chaos Control
         if (chaosControl)
@@ -73,6 +74,7 @@ public class GamePlaySwitcher : MonoBehaviour
                 Time.timeScale = 1;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 music.pitch = 1;
+                popose.enabled = true;
             }
         }
 
@@ -90,8 +92,11 @@ public class GamePlaySwitcher : MonoBehaviour
     {
         chaosControl = false;
         yield return new WaitForSecondsRealtime(timeBeforeSwitch - 1);
-        if(playerStats.inBattle)
+        if (playerStats.inBattle)
+        {
             chaosControl = true;
+            popose.enabled = false;
+        }
     }
 
     void SwitchGamePlay()
@@ -104,6 +109,7 @@ public class GamePlaySwitcher : MonoBehaviour
             deckUI.SwapHandUI(true);
             DeckManager.instance.FullHand();
 
+            
         }
         else
         {

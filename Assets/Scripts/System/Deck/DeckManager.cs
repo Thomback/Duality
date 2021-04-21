@@ -63,17 +63,16 @@ public class DeckManager : MonoBehaviour
     public void FullHand()
     {
         if (currentHand.cardCount > currentCardLimit) return;
-        // If there is no card in the deck we shuffle and put the deadDeck inside it
-        if (deck.cardCount == 0)
-        {
-            deadDeck.Shuffle();
-            deck.SetDeck(deadDeck.getDeck());
-            deadDeck.ClearDeck();
-        }
         // We store the current deckCardCount before changing it by removing card inside it
-        int currentDeckCardCount = deck.cardCount;
-        for (int i = 0; i < currentCardLimit && i < currentDeckCardCount; ++i)
+        for (int i = 0; i < currentCardLimit && i < currentCardLimit; ++i)
         {
+            // If there is no card in the deck we shuffle and put the deadDeck inside it
+            if (deck.cardCount == 0)
+            {
+                deadDeck.Shuffle();
+                deck.SetDeck(deadDeck.getDeck());
+                deadDeck.ClearDeck();
+            }
             Card currentCard = deck.PopCard();
             currentHand.AddCard(currentCard);
             deck.RemoveCard(currentCard);
