@@ -178,6 +178,7 @@ public class PlayerAttack : MonoBehaviour
                 return battleStats.finalAttackDelay() * 2;
             case 3: //Lance
                 SoundScript.PlaySound("sword");
+                anim.Play("SingleHandSlash");
 
                 //if (!projectileStart.GetComponent<Spear>().Equals(null))
                    projectileStart.GetComponent<Spear>().SpearLaunch();

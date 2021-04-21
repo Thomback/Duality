@@ -57,8 +57,7 @@ public class DeckUI : MonoBehaviour
             go.GetComponent<Image>().color = cardColors[(int)cardsList[i].cardType];
             go.transform.GetChild(0).GetComponent<Text>().text = cardsList[i].name;
             go.transform.GetChild(1).GetComponent<Image>().sprite = cardsList[i].image;
-            go.transform.GetChild(2).GetComponent<Text>().text = "Description : " + cardsList[i].description;
-            go.transform.GetChild(3).GetComponent<Text>().text = cardsList[i].value.ToString();
+            go.transform.GetChild(2).GetComponent<Text>().text = cardsList[i].description;
         }
     }
 }
